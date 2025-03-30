@@ -1,0 +1,17 @@
+{
+  "name": "Scrim-s05rqc4",
+  "description": "https://scrimba.com/the-ai-engineer-path-c02v/~0o/s01dmbkk8s/head",
+  "scripts": {
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "openai": "^4.90.0",
+    "vite": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.0"
+  }
+}

@@ -1,0 +1,8 @@
+{
+	"dependencies": {
+		"openai": "^4.90.0"
+	},
+	"devDependencies": {
+		"@types/node": "^22.13.0"
+	}
+}

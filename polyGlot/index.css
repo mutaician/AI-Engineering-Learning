@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f4f8; /* Light background for contrast */
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #0a192f; /* Dark blue */
+    background-image: url('assets/worldmap.png');
+    background-size: cover;
+    background-position: center;
+    padding: 20px 40px;
+    color: white;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    height: 80px; /* Adjust as needed */
+}
+
+.title-group h1 {
+    margin: 0;
+    font-size: 2.5em; /* Larger font size */
+    font-weight: 700;
+    color: #33ff99; /* Brighter green like the design */
+}
+
+.title-group p {
+    margin: 0;
+    font-size: 1em;
+    font-weight: 400;
+    color: #ffffff; /* Pure white like the design */
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.translation-card {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px; /* More rounded corners */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); /* Subtler shadow */
+    border: 2px solid #005792; /* Dark blue border like the design */
+    max-width: 450px; /* Slightly narrower to match design proportions */
+    width: 100%;
+}
+
+#translation-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Spacing between form elements */
+}
+
+.section-title {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #005792; /* Darker blue for titles */
+    margin-bottom: -10px; /* Reduce space below title */
+}
+
+textarea#text-input {
+    width: calc(100% - 30px); /* Account for padding */
+    padding: 15px;
+    border: none; /* Remove border */
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1em;
+    resize: vertical; /* Allow vertical resize */
+    background-color: #f0f4f8; /* Match body background - design has light grey */
+    min-height: 80px; /* Ensure decent height */
+}
+
+.language-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between radio options */
+}
+
+.language-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.language-option input[type="radio"] {
+    accent-color: #005792; /* Match button color */
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.language-option label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.language-option img {
+    height: 20px;
+    width: auto;
+    border: 1px solid #eee; /* Subtle border for flags */
+}
+
+button[type="submit"] {
+    background-color: #005792; /* Primary button color */
+    color: white;
+    border: none;
+    padding: 15px 0; /* Adjust padding for full width */
+    width: 100%; /* Make button full width */
+    border-radius: 8px;
+    font-size: 1.2em; /* Slightly larger font */
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 15px; /* Add some space above the button */
+    text-align: center;
+}
+
+button[type="submit"]:hover {
+    background-color: #00416a; /* Darker shade on hover */
+}
+
+/* Utility class */
+.hidden {
+    display: none;
+}
+
+/* Style for the translation result display area */
+#translation-result-display {
+    width: calc(100% - 30px); /* Match textarea width */
+    padding: 15px; /* Match textarea padding */
+    border: none;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1em;
+    background-color: #f0f4f8; /* Match textarea background */
+    min-height: 80px; /* Match textarea min-height */
+    white-space: pre-wrap; /* Preserve whitespace and wrap text */
+    word-wrap: break-word; /* Break long words */
+}
+
+/* Style for the main action button (shared by Translate/Start Over) */
+#action-button {
+    background-color: #005792; /* Match translate button */
+    color: white;
+    border: none;
+    padding: 15px 0;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 1.2em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, opacity 0.3s ease; /* Added opacity transition */
+    margin-top: 15px;
+    text-align: center;
+}
+
+#action-button:hover {
+    background-color: #00416a; /* Match translate button hover */
+}
+
+#action-button:disabled {
+    opacity: 0.7; /* Indicate disabled state */
+    cursor: not-allowed;
+}
+
+
+/* Responsive adjustments if needed */
+@media (max-width: 600px) {
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .logo {
+        height: 60px;
+    }
+    .title-group h1 {
+        font-size: 2em;
+    }
+    .translation-card {
+        padding: 20px;
+    }
+}

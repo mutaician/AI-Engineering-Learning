@@ -1,24 +1,3 @@
-import OpenAI from 'openai';
-
-// --- Configuration ---
-// IMPORTANT: Replace "YOUR_API_KEY_HERE" with your actual OpenRouter API key.
-// Never commit API keys directly into your frontend code in production!
-const OPENROUTER_API_KEY = "YOUR_API_KEY_HERE";
-const API_BASE_URL = 'https://openrouter.ai/api/v1';
-const MODEL_NAME = 'deepseek/deepseek-chat-v3-0324:free';
-
-// --- OpenAI Client Setup ---
-let openai;
-if (OPENROUTER_API_KEY === "YOUR_API_KEY_HERE") {
-    console.warn("OpenRouter API Key not set. Please replace 'YOUR_API_KEY_HERE' in index.js");
-    // Display a message to the user in the UI?
-} else {
-    openai = new OpenAI({
-        baseURL: API_BASE_URL,
-        apiKey: OPENROUTER_API_KEY,
-        dangerouslyAllowBrowser: true, // Required for browser usage
-    });
-}
 
 // --- DOM Elements ---
 const textInputLabel = document.getElementById('text-input-label');
@@ -55,10 +34,6 @@ function handleActionButtonClick() {
 }
 
 async function handleTranslate() {
-    if (!openai) {
-        alert("API client is not configured. Please add your API key to index.js.");
-        return;
-    }
 
     const textToTranslate = textInput.value.trim();
     const selectedLanguageValue = document.querySelector('input[name="language"]:checked')?.value;
@@ -88,16 +63,20 @@ async function handleTranslate() {
     textInput.readOnly = true; // Make input read-only
 
     try {
-        const completion = await openai.chat.completions.create({
-            model: MODEL_NAME,
-            messages: [
-                { role: 'system', content: `You are a helpful translation assistant. Translate the user's text accurately to the specified language. Provide only the translation, without any extra explanations or introductory phrases.` },
-                { role: 'user', content: prompt },
-            ],
-            temperature: 0.7,
-        });
 
-        const translation = completion.choices[0]?.message?.content?.trim() || 'Translation not available.';
+        // make a fetch request to worker url
+        const WorkerUrl = "https://translation-api-worker.cypriankiplangat.workers.dev/message"
+
+        const response = await fetch(WorkerUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: ''
+        })
+
+        const data = await response.json()
+        console.log(data)
 
         // --- Update UI with Result ---
         translationResultDisplay.textContent = translation;
@@ -112,7 +91,7 @@ async function handleTranslate() {
         // For simplicity, we'll leave the UI in the 'result' state but show error.
         // User must click "Start Over" to try again.
         actionButton.textContent = 'Start Over'; // Allow starting over even on error
-        isShowingResult = true; // Treat error state like result state for reset logic
+        isShowingResult = true; 
 
     } finally {
         // Re-enable button regardless of success or error

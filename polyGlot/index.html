@@ -18,13 +18,11 @@
     </header>
     <main>
         <div class="translation-card">
-            <!-- Form structure remains, but elements get IDs for manipulation -->
             <form id="translation-form">
                 <label for="text-input" class="section-title" id="text-input-label">Text to translate 👇</label>
                 <textarea id="text-input" name="text-input" rows="4" placeholder="How are you?"></textarea>
 
                 <label class="section-title" id="language-section-label">Select language 👇</label>
-                <!-- Container for language options -->
                 <div class="language-options" id="language-options-container">
                     <div class="language-option">
                         <input type="radio" id="lang-fr" name="language" value="fr" checked>
@@ -38,20 +36,17 @@
                         <input type="radio" id="lang-jp" name="language" value="jp">
                         <label for="lang-jp">Japanese <img src="assets/jpn-flag.png" alt="Japanese Flag"></label>
                     </div>
+                    <div class="language-option">
+                        <input type="radio" id="lang-ke" name="language" value="sw">
+                        <label for="lang-ke">Swahili <img src="assets/ke-flag.png" alt="Kenyan Flag"></label>
+                    </div>
                 </div>
-                <!-- Div to display translation result, initially hidden -->
                 <div id="translation-result-display" class="text-display hidden"></div>
 
-                <!-- Single button that changes text and function -->
                 <button type="button" id="action-button">Translate</button>
             </form>
-            <!-- Removed the separate result-view div -->
         </div>
     </main>
-    <!-- IMPORTANT: Ensure you have the OpenAI library included -->
-    <!-- If using a CDN (less common for OpenAI): -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/openai/dist/openai.min.js"></script> -->
-    <!-- If using a bundler like Vite/Webpack, import it in index.js -->
     <script type="module" src="index.js"></script>
 </body>
 </html>

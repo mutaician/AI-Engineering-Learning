@@ -16,6 +16,7 @@ const languageMap = {
     fr: 'French',
     es: 'Spanish',
     jp: 'Japanese',
+    sw: 'Swahili'
 };
 
 // --- Event Listeners ---

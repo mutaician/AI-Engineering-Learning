@@ -79,7 +79,23 @@ async function handleTranslate() {
             body: JSON.stringify(messages)
         })
 
-        const data = await response.json()
+        // Check if the response is OK
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error || `API returned status ${response.status}`);
+        }
+
+        const data = await response.json();
+        
+        // Check if data is a string (successful translation) or an object (error)
+        if (typeof data === 'object' && data !== null) {
+            if (data.error) {
+                throw new Error(data.error);
+            }
+            // If we get here, it's an unexpected object response
+            throw new Error('Received unexpected response format from the API');
+        }
+
 
         // --- Update UI with Result ---
         translationResultDisplay.textContent = data;

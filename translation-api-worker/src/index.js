@@ -56,8 +56,8 @@ async function handleRequest(request, env) {
 		  }
 
       const openai = new OpenAI({
-        baseURL: 'https://openrouter.ai/api/v1',
         apiKey: env.OPENROUTER_API_KEY,
+		    baseURL: 'https://gateway.ai.cloudflare.com/v1/fef3650e430073c0031bff3f0db4455a/translation-app/openrouter'
       });
       
       try {

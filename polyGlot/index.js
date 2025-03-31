@@ -47,9 +47,13 @@ async function handleTranslate() {
         return;
     }
 
-    originalText = textToTranslate; // Store the original text
+    originalText = textToTranslate; 
     const targetLanguageName = languageMap[selectedLanguageValue];
     const prompt = `Translate the following English text to ${targetLanguageName}:\n\n"${textToTranslate}"\n\nTranslation:`;
+    const messages = [
+        { role: 'system', content: `You are a helpful translation assistant. Translate the user's text accurately to the specified language. Provide only the translation, without any extra explanations or introductory phrases. and not in quotes. The translation must be in plain text format.` },
+        { role: 'user', content: prompt },
+      ]
 
     // --- Update UI for Loading State ---
     actionButton.disabled = true;
@@ -72,14 +76,13 @@ async function handleTranslate() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: ''
+            body: JSON.stringify(messages)
         })
 
         const data = await response.json()
-        console.log(data)
 
         // --- Update UI with Result ---
-        translationResultDisplay.textContent = translation;
+        translationResultDisplay.textContent = data;
         actionButton.textContent = 'Start Over';
         isShowingResult = true;
 

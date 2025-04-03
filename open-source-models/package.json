@@ -12,6 +12,7 @@
     "vite": "6.2.4"
   },
   "dependencies": {
-    "@huggingface/inference": "3.6.2"
+    "@huggingface/inference": "3.6.2",
+    "@huggingface/transformers": "^3.4.2"
   }
 }

@@ -1,8 +1,8 @@
-import './style.css'
-import ollama from 'ollama'
-import { GoogleGenAI } from '@google/genai'
+import "./style.css";
+import ollama from "ollama";
+import { GoogleGenAI } from "@google/genai";
 
-const content = [
+const contents = [
   "Beyond Mars: speculating life on distant planets.",
   "Jazz under stars: a night in New Orleans' music scene.",
   "Mysteries of the deep: exploring uncharted ocean caves.",
@@ -10,27 +10,60 @@ const content = [
   "Tales from the tech frontier: decoding AI ethics.",
 ];
 
-async function embeddingWithOllama() {
-  const embedding = await ollama.embeddings({
-    model: 'nomic-embed-text',
-    prompt: "Hello Embedding"
-  })
+async function embeddingWithOllama(text) {
+  try {
+    const embedding = await ollama.embeddings({
+      model: "nomic-embed-text",
+      prompt: text,
+    });
 
-  console.log(embedding["embedding"])
+    return {
+      text,
+      embedding: embedding.embedding,
+      dimension: embedding.embedding.length
+    };
+  } catch (error) {
+    console.error(`Error generating embedding for text: "${text}"`, error);
+    return null;
+  }
 }
 
 async function embeddingWithGoogle() {
-  const ai = new GoogleGenAI({apiKey: import.meta.env.VITE_GEMINI_API_KEY})
+  const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY });
 
   const response = await ai.models.embedContent({
     model: "text-embedding-004",
-    contents: content
-  })
+    contents: "Hello, World",
+  });
 
-  console.log(response.embeddings[0])
+  console.log(response.embeddings);
 }
 
-// embeddingWithGoogle()
-embeddingWithOllama()
+async function processContents() {
+  const embeddings = [];
+  
+  for (const text of contents) {
+    const result = await embeddingWithOllama(text);
+    if (result) {
+      embeddings.push(result);
+    }
+  }
+  
+  return embeddings;
+}
 
-document.querySelector('#app').innerHTML = "<h1>Hello Embedding</h1>"
+async function main() {
+  const results = await processContents();
+  console.log('Embedding Results:', results);
+  
+  results.forEach(({text, embedding, dimension}) => {
+    console.log('\n---');
+    console.log(`Text: ${text}`);
+    console.log(`Dimension: ${dimension}`);
+    console.log(`First 5 values: [${embedding.slice(0, 5).join(', ')}]`);
+  });
+}
+
+main();
+
+document.querySelector("#app").innerHTML = "<h1>Hello Embedding</h1>";

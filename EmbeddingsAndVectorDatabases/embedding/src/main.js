@@ -1,14 +1,13 @@
 import "./style.css";
 import ollama from "ollama";
 import { GoogleGenAI } from "@google/genai";
+import { createClient } from "@supabase/supabase-js";
+import podcasts from "./content";
 
-const contents = [
-  "Beyond Mars: speculating life on distant planets.",
-  "Jazz under stars: a night in New Orleans' music scene.",
-  "Mysteries of the deep: exploring uncharted ocean caves.",
-  "Rediscovering lost melodies: the rebirth of vinyl culture.",
-  "Tales from the tech frontier: decoding AI ethics.",
-];
+// Supabase config
+const privateKey = import.meta.env.VITE_SUPABASE_API_KEY
+const url = import.meta.env.VITE_SUPABASE_URL
+const supabase = createClient(url, privateKey)
 
 async function embeddingWithOllama(text) {
   try {
@@ -18,9 +17,8 @@ async function embeddingWithOllama(text) {
     });
 
     return {
-      text,
+      content: text,
       embedding: embedding.embedding,
-      dimension: embedding.embedding.length
     };
   } catch (error) {
     console.error(`Error generating embedding for text: "${text}"`, error);
@@ -28,18 +26,25 @@ async function embeddingWithOllama(text) {
   }
 }
 
-async function embeddingWithGoogle() {
-  const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY });
+async function embeddingWithGoogle(text) {
+  try {
+    const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY });
+    const response = await ai.models.embedContent({
+      model: "text-embedding-004",
+      contents: text,
+    });
 
-  const response = await ai.models.embedContent({
-    model: "text-embedding-004",
-    contents: "Hello, World",
-  });
-
-  console.log(response.embeddings);
+    return {
+      content: text,
+      embedding: response.embeddings[0].values,
+    };
+  } catch (error) {
+    console.error(`Error generating embedding for text: "${text}"`, error);
+    return null;
+  }
 }
 
-async function processContents() {
+async function processContents(contents) {
   const embeddings = [];
   
   for (const text of contents) {
@@ -52,16 +57,31 @@ async function processContents() {
   return embeddings;
 }
 
+async function getVectorMatch(query) {
+  const embedding = await embeddingWithOllama(query)
+  const queryEmbedding = embedding.embedding
+
+  const { data } = await supabase.rpc('match_documents', {
+    query_embedding: queryEmbedding,
+    match_threshold: 0.5,
+    match_count: 5
+  })
+
+  console.log(data)
+
+}
+
 async function main() {
-  const results = await processContents();
-  console.log('Embedding Results:', results);
+  // const data = await processContents(podcasts);
+  // console.log('Embedding Results:', data);
+  // // insert data to supabase
+  // await supabase.from('documents').insert(data)
+  // console.log("Storing to supabase complete")
+
+  // Query supabase for nearest vector 
+  const query = "Training computers"
+  await getVectorMatch(query)
   
-  results.forEach(({text, embedding, dimension}) => {
-    console.log('\n---');
-    console.log(`Text: ${text}`);
-    console.log(`Dimension: ${dimension}`);
-    console.log(`First 5 values: [${embedding.slice(0, 5).join(', ')}]`);
-  });
 }
 
 main();

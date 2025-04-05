@@ -15,8 +15,8 @@ async function splitDocument(document) {
   const text = await response.text();
 
   const splitter = new RecursiveCharacterTextSplitter({
-    chunkSize: 150,
-    chunkOverlap: 15
+    chunkSize: 500,
+    chunkOverlap: 250
   })
 
   const output = await splitter.splitText(text) 
@@ -65,12 +65,16 @@ async function createAndStoreEmbeddings(contents) {
   console.log("Embeddings creation and storage complete.")
 }
 
-async function main() {
+async function processMovies(){
   const contentSplits = await splitDocument('/src/movies.txt')
   console.log("Splitting contents Complete")
   await createAndStoreEmbeddings(contentSplits)
   console.log("Done")
+}
 
+
+async function main() {
+  // await processMovies()
 
 
 }

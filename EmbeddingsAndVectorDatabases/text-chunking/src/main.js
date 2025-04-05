@@ -157,14 +157,7 @@ async function getVectorMatch(query) {
 async function generateMovieResponse(context, query) {
   try {
     console.log('Generating movie response...');
-    const systemPrompt = `You are a knowledgeable movie expert who loves discussing and recommending films. 
-    You will be given context about multiple movies and a question. 
-    Your main job is to formulate a helpful and engaging answer to the question using the provided context. 
-    If the question is about a specific movie, focus on that movie's information.
-    If the question is more general, feel free to compare or reference multiple movies from the context.
-    Keep your responses friendly but concise. 
-    If you cannot find the answer in the context, say, 'I apologize, but I don't have enough information to answer that question.'
-    Please do not make up any information that isn't in the context.`;
+    const systemPrompt = `You are an enthusiastic movie expert who loves recommending movies to people. You will be given two pieces of information - some context about movies and a question. Your main job is to formulate a short answer to the question using the provided context. If you are unsure and cannot find the answer in the context, do not make up the answer else be friendly and caring. DON"T recommend any specific movie not mentioned in the context even if you know that movie. But provide a helpful answer to the user.`;
     
     const response = await ollama.chat({
       model: 'gemma3:1b',
@@ -184,20 +177,17 @@ async function generateMovieResponse(context, query) {
     return response.message.content;
   } catch (error) {
     console.error('Error in generateMovieResponse:', error);
-    return "I apologize, but I encountered an error while processing your request. Please try again.";
+    return "I'm having a moment! Let me gather my thoughts about movies and try again.";
+
   }
 }
 
 async function handleMovieSearch(query) {
   try {
     const resultElement = document.getElementById("result");
-    resultElement.textContent = "Searching for movie information...";
+    resultElement.textContent = "Thinking...";
 
     const matchedContent = await getVectorMatch(query);
-    if (!matchedContent) {
-      resultElement.textContent = "I couldn't find any relevant movie information. Please try a different question.";
-      return;
-    }
 
     const aiResponse = await generateMovieResponse(matchedContent, query);
     resultElement.textContent = aiResponse;
@@ -254,6 +244,7 @@ async function main() {
         await handleMovieSearch(query);
       }
     });
+    
 
     console.log('Application setup completed successfully');
   } catch (error) {

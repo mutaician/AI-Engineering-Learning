@@ -1,7 +1,7 @@
 import './style.css'
 
 
-import { CharacterTextSplitter } from "langchain/text_splitter";
+import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
 
 
 // LangChain text splitter
@@ -10,7 +10,7 @@ async function splitDocument() {
   const text = await response.text();
   // console.log(text);
 
-  const splitter = new CharacterTextSplitter({
+  const splitter = new RecursiveCharacterTextSplitter({
     separator: " ",
     chunkSize: 150,
     chunkOverlap: 15
@@ -21,5 +21,5 @@ async function splitDocument() {
 }
 splitDocument()
 
-document.querySelector('#app').innerHTML = ""
+document.querySelector('#app').innerHTML = "Embedding and Vector Databases"
 

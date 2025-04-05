@@ -11,74 +11,121 @@ const supabase = createClient(url, privateKey)
 
 // LangChain text splitter
 async function splitDocument(document) {
-  const response = await fetch(document);
-  const text = await response.text();
+  try {
+    console.log(`Starting to split document: ${document}`);
+    const response = await fetch(document);
+    
+    if (!response.ok) {
+      throw new Error(`Failed to fetch document: ${response.status} ${response.statusText}`);
+    }
+    
+    const text = await response.text();
+    console.log(`Successfully fetched document, length: ${text.length} characters`);
 
-  const splitter = new RecursiveCharacterTextSplitter({
-    chunkSize: 500,
-    chunkOverlap: 250
-  })
+    const splitter = new RecursiveCharacterTextSplitter({
+      chunkSize: 500,
+      chunkOverlap: 250
+    })
 
-  const output = await splitter.splitText(text) 
-  return output
+    const output = await splitter.splitText(text);
+    console.log(`Document successfully split into ${output.length} chunks`);
+    return output;
+  } catch (error) {
+    console.error('Error in splitDocument:', error.message);
+    throw error;
+  }
 }
 
 // Embedding
 // initialise embedding pipeline
-let generateEmbedding = await pipeline('feature-extraction', 'Xenova/all-MiniLM-L6-v2')
+let generateEmbedding = await pipeline('feature-extraction', 'Xenova/all-MiniLM-L6-v2');
 
 async function embeddingWithMiniLM(text) {
   try {
     if (!generateEmbedding) {
-      console.log("Initializing the pipeline")
-      generateEmbedding = await pipeline('feature-extraction', 'Xenova/all-MiniLM-L6-v2')
+      console.log("Initializing the embedding pipeline...");
+      generateEmbedding = await pipeline('feature-extraction', 'Xenova/all-MiniLM-L6-v2');
     }
 
+    console.log(`Generating embedding for text of length: ${text.length}`);
     const output = await generateEmbedding(text, {
-      pooling: 'mean', // Average the token embeddings
-      normalize: true, // Normalize the resulting vector
+      pooling: 'mean',
+      normalize: true,
     });
 
     const embedding = Array.from(output.data);
+    console.log(`Successfully generated embedding of length: ${embedding.length}`);
 
     return {
       content: text,
       embedding: embedding,
     };
   } catch (error) {
-    console.error(`Error generating embedding for text: "${text}"`, error);
+    console.error(`Error generating embedding:`, error);
     return null;
   }
 }
 
 async function createAndStoreEmbeddings(contents) {
-  const embeddings = []
+  try {
+    console.log(`Starting embedding creation for ${contents.length} chunks`);
+    const embeddings = [];
+    let successCount = 0;
+    let failCount = 0;
 
-  for  (const text of contents){
-    const result = await embeddingWithMiniLM(text)
-    if (result){
-      embeddings.push(result)
+    for (const text of contents) {
+      const result = await embeddingWithMiniLM(text);
+      if (result) {
+        embeddings.push(result);
+        successCount++;
+      } else {
+        failCount++;
+      }
     }
+
+    console.log(`Embedding generation complete. Success: ${successCount}, Failed: ${failCount}`);
+    
+    if (embeddings.length > 0) {
+      console.log('Storing embeddings in Supabase...');
+      const { data, error } = await supabase.from('documentstwo').insert(embeddings);
+      
+      if (error) {
+        throw new Error(`Supabase storage error: ${error.message}`);
+      }
+      
+      console.log(`Successfully stored ${embeddings.length} embeddings in Supabase`);
+    } else {
+      console.warn('No embeddings to store in database');
+    }
+  } catch (error) {
+    console.error('Error in createAndStoreEmbeddings:', error);
+    throw error;
   }
-
-  await supabase.from('documentstwo').insert(embeddings)
-  console.log("Embeddings creation and storage complete.")
 }
 
-async function processMovies(){
-  const contentSplits = await splitDocument('/src/movies.txt')
-  console.log("Splitting contents Complete")
-  await createAndStoreEmbeddings(contentSplits)
-  console.log("Done")
+async function processMovies() {
+  try {
+    console.log('Starting movie processing pipeline...');
+    const contentSplits = await splitDocument('/src/movies.txt');
+    console.log(`Document splitting complete. Generated ${contentSplits.length} splits`);
+    
+    await createAndStoreEmbeddings(contentSplits);
+    console.log('Movie processing pipeline completed successfully');
+  } catch (error) {
+    console.error('Error in processMovies:', error);
+    throw error;
+  }
 }
-
 
 async function main() {
-  // await processMovies()
-
-
+  try {
+    console.log('Starting main application...');
+    await processMovies();
+    console.log('Application completed successfully');
+  } catch (error) {
+    console.error('Application failed:', error);
+  }
 }
-
 
 main()
 document.querySelector('#app').innerHTML = "Embedding, Vector Databases and Text Chunking"

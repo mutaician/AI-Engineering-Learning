@@ -4,10 +4,43 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>Movie Search Assistant</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
   </head>
-  <body>
-    <div id="app"></div>
+  <body class="bg-gray-100 min-h-screen">
+    <div id="app" class="container mx-auto px-4 py-8">
+      <div class="max-w-2xl mx-auto">
+        <h1 class="text-4xl font-bold text-center mb-8 text-gray-800">Movie Search Assistant</h1>
+        
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <div class="space-y-4">
+            <div class="search-container">
+              <input 
+                type="text" 
+                id="movie-query" 
+                placeholder="Ask me about any movie..." 
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              >
+              <button 
+                id="search" 
+                class="w-full mt-4 bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors duration-200"
+              >
+                Search
+              </button>
+            </div>
+            
+            <div 
+              id="result" 
+              class="mt-6 p-4 bg-gray-50 rounded-lg min-h-[100px] whitespace-pre-wrap"
+            >
+              Ask me anything about movies!
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

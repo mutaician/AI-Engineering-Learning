@@ -4,17 +4,6 @@ import { createClient } from "@supabase/supabase-js";
 import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
 import ollama from "ollama";
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <h1>Movie Search Assistant</h1>
-    <div class="search-container">
-      <input type="text" id="movie-query" placeholder="Ask me about any movie...">
-      <button id="search">Search</button>
-    </div>
-    <div id="result"></div>
-  </div>
-`
-
 // Supabase config
 const privateKey = import.meta.env.VITE_SUPABASE_API_KEY
 const url = import.meta.env.VITE_SUPABASE_URL
@@ -35,7 +24,7 @@ async function splitDocument(document) {
 
     const splitter = new RecursiveCharacterTextSplitter({
       chunkSize: 500,
-      chunkOverlap: 250
+      chunkOverlap: 50
     })
 
     const output = await splitter.splitText(text);

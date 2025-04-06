@@ -21,9 +21,9 @@ const openai = new OpenAI({
  */
 
 const availableFunctions = {
-  "getCurrentWeather": getCurrentWeather,
-  "getLocation": getLocation
-}
+  getCurrentWeather,
+  getLocation,
+};
 
 const systemPrompt = `
 You cycle through Thought, Action, PAUSE, Observation. At the end of the loop you output a final Answer. Your final answer should be highly specific to the observations you have from running
@@ -74,26 +74,48 @@ async function agent(query) {
     },
   ];
 
-  const response = await openai.chat.completions.create({
-    model: "meta-llama/llama-4-maverick:free",
-    messages
-  })
-
-  const responseText = response.choices[0].message.content
-  const responseLines = responseText.split("\n")
-  const actionLine = responseLines.find(line => line.startsWith("Action:"));
-  const actionMatch = actionLine.match(/Action:\s*(\w+):\s*(.*)/);
-  const [_, action, actionArg] = actionMatch
-  const observation  = await availableFunctions[action](actionArg)
-  console.log(observation)
+  const MAX_ITERATIONS = 5;
+  const actionRegex = /^Action: (\w+): (.*)$/
 
 
+  for (let i = 0; i < MAX_ITERATIONS; i++) {
+    console.log(`Iteration: `, i + 1)
 
+    const response = await openai.chat.completions.create({
+      model: "meta-llama/llama-4-maverick:free",
+      messages,
+    });
 
+    const responseText = response.choices[0].message.content;
+    console.log(responseText)
+    messages.push({ role: "assistant", content: responseText });
+
+    const responseLines = responseText.split("\n");
+    const actionMatch = responseLines.find(line => actionRegex.test(line))
+
+    if (actionMatch) {
+      const actions = actionRegex['exec'](actionMatch)
+      const [_, action, actionArg] = actions;
+
+      if (!availableFunctions.hasOwnProperty(action)) {
+        throw new Error(`Unknown action: ${action}: ${actionArg}`);
+      }
+
+      console.log(`Calling function: ${action} with argument ${actionArg}`)
+      const observation = await availableFunctions[action](actionArg);
+      messages.push({
+        role: "assistant",
+        content: `Observation: ${observation}`,
+      });
+    } else {
+      console.log("Agent finished with task")
+      return responseText
+    }
+  }
 }
 
 async function main() {
-  await agent("What is the current weather in Nairobi")
+  console.log(await agent("I am a student. Could you list for me some activity ideas that I can do today based on my location and weather?"))
 }
 
 main();

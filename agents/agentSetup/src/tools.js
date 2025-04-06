@@ -1,13 +1,13 @@
 export async function getCurrentWeather(){
     const weather = {
-        temperature: "62",
-        unit: "F",
-        forecast: "Cloudy"
+        temperature: "24",
+        unit: "C",
+        forecast: "Raining"
     }
 
     return JSON.stringify(weather)
 }
 
 export async function getLocation(){
-    return "Nakuru, Kenya"
+    return "Kabarak, Nakuru, Kenya"
 }

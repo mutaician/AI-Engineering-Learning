@@ -11,7 +11,7 @@ const openai = new OpenAI({
 
 async function main() {
   const completion = await openai.chat.completions.create({
-    model: "openrouter/quasar-alpha",
+    model: "meta-llama/llama-4-maverick:free",
     messages: [
       {
         "role": "user",

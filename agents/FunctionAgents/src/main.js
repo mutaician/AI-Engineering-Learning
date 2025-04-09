@@ -1,6 +1,6 @@
 import './style.css'
 import OpenAI from 'openai'
-import { getCurrentWeather, getLocation } from "./tools";
+import { getCurrentWeather, getLocation, tools } from "./tools";
 
 
 const openai = new OpenAI({
@@ -22,16 +22,25 @@ async function agent(query) {
   
   const MAX_ITERATIONS = 5
   
-  for (let i = 0; i < MAX_ITERATIONS; i++) {
-      console.log(`Iteration #${i + 1}`)
+  // for (let i = 0; i < MAX_ITERATIONS; i++) {
+  //     console.log(`Iteration #${i + 1}`)
       const response = await openai.chat.completions.create({
           model: "openrouter/quasar-alpha",
           messages,
+          tools
       })
 
-      const responseText = response.choices[0].message.content
-      console.log(responseText)
-  }
+      // const responseText = response.choices[0].message.content
+      console.log(response)
+  // }
 }
 
-document.querySelector('#app').innerHTML = ''
+async function main(){
+  console.log("stating")
+  await agent("What is my current location")
+  console.log("End")
+}
+
+main()
+
+document.querySelector('#app').innerHTML = 'Hello I am learning about OpenAI Functions Agent'

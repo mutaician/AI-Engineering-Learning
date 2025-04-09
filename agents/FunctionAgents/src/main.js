@@ -22,22 +22,47 @@ async function agent(query) {
   
   const MAX_ITERATIONS = 5
   
-  // for (let i = 0; i < MAX_ITERATIONS; i++) {
-  //     console.log(`Iteration #${i + 1}`)
+  for (let i = 0; i < MAX_ITERATIONS; i++) {
+      console.log(`Iteration #${i + 1}`)
       const response = await openai.chat.completions.create({
           model: "openrouter/quasar-alpha",
           messages,
           tools
       })
 
-      // const responseText = response.choices[0].message.content
       console.log(response)
-  // }
+
+      const {finish_reason: finishReason, message} = response.choices[0]
+      const {tool_calls: toolCalls} = message
+      messages.push(message)
+
+      if (finishReason === "stop"){
+        console.log("AGENT STOPPED")
+        return message.content
+      }
+      if (finishReason === "tool_calls"){
+        for (const toolCall of toolCalls) {
+          const functionName = toolCall.function.name
+          const functionToCall = availableFunctions[functionName]
+          const functionArgs = JSON.parse(toolCall.function.arguments)
+          const functionResponse = await functionToCall(functionArgs)
+          console.log(functionResponse)
+
+          messages.push({
+            role: 'tool',
+            toolCallId: toolCall.id,
+            name: functionName,
+            content: functionResponse
+          })
+        }
+      }
+      // console.log(response)
+  }
 }
 
 async function main(){
   console.log("stating")
-  await agent("What is my current location")
+  console.log(await agent("whats my location"))
   console.log("End")
 }
 

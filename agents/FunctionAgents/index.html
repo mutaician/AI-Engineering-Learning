@@ -4,10 +4,31 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>AI Assistant</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <header>
+        <h1>AI Assistant</h1>
+      </header>
+      
+      <main class="chat-container">
+        <div id="messages" class="messages-area"></div>
+        
+        <div class="input-area">
+          <form id="chat-form">
+            <input 
+              type="text" 
+              id="user-input" 
+              placeholder="Ask me anything..." 
+              autocomplete="off"
+            />
+            <button type="submit" id="send-button">Send</button>
+          </form>
+          <button id="clear-chat" class="clear-button">Clear Chat</button>
+        </div>
+      </main>
+    </div>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

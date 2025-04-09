@@ -12,6 +12,7 @@
     "vite": "^6.1.0"
   },
   "dependencies": {
+    "marked": "^15.0.8",
     "openai": "^4.90.0"
   }
 }

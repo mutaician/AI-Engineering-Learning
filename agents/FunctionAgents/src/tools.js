@@ -1,9 +1,9 @@
-export async function getCurrentWeather({ location, unit = "celcius" }) {
+export async function getCurrentWeather({ location }) {
 
   const weather = {
     location,
     temperature: "34",
-    unit,
+    unit: "C",
     forecast: "partly cloudy",
   };
 
@@ -18,30 +18,27 @@ export const tools = [
   {
     type: "function",
     function: {
-      name: "getCurrentWeather",
-      description: "Get the current weather",
-      parameters: {
-        type: "object",
-        properties: {
-          location: {
-            type: "string",
-            description: "The location from where to get the weather",
-          },
-          unit: { type: "string", enum: ["celcius", "fahrenheit"] },
-        },
-        required: ["location"],
-      },
-    },
+        function: getCurrentWeather,
+        parameters: {
+            type: 'object',
+            properties: {
+                location: {
+                    type: 'string',
+                    description: 'The location to get the weather'
+                }
+            },
+            required: ["location"]
+        }
+    }
   },
   {
     type: "function",
     function: {
-      name: "getLocation",
-      description: "Get the user's current location",
-      parameters: {
-        type: "object",
-        properties: {},
-      },
-    },
+        function: getLocation,
+        parameters: {
+            type: 'object',
+            properties: {}
+        }
+    }
   },
 ];

@@ -30,10 +30,11 @@ async function agent(query) {
           tools
       })
 
-      console.log(response)
+      // console.log(JSON.stringify(response.choices[0],null,2))
 
       const {finish_reason: finishReason, message} = response.choices[0]
       const {tool_calls: toolCalls} = message
+      // console.log(JSON.striangify(toolCalls))
       messages.push(message)
 
       if (finishReason === "stop"){
@@ -50,7 +51,7 @@ async function agent(query) {
 
           messages.push({
             role: 'tool',
-            toolCallId: toolCall.id,
+            tool_call_id: toolCall.id,
             name: functionName,
             content: functionResponse
           })
@@ -62,7 +63,7 @@ async function agent(query) {
 
 async function main(){
   console.log("stating")
-  console.log(await agent("whats my location"))
+  console.log(await agent("whats the current weather"))
   console.log("End")
 }
 

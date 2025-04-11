@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "google-auth>=2.38.0",
+    "litellm>=1.65.7",
     "openai>=1.72.0",
     "python-dotenv>=1.1.0",
     "smolagents[litellm]>=1.13.0",

@@ -8,6 +8,7 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "google-auth" },
+    { name = "litellm" },
     { name = "openai" },
     { name = "python-dotenv" },
     { name = "smolagents", extra = ["litellm"] },
@@ -16,6 +17,7 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "google-auth", specifier = ">=2.38.0" },
+    { name = "litellm", specifier = ">=1.65.7" },
     { name = "openai", specifier = ">=1.72.0" },
     { name = "python-dotenv", specifier = ">=1.1.0" },
     { name = "smolagents", extras = ["litellm"], specifier = ">=1.13.0" },

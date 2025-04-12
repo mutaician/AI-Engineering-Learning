@@ -1,6 +1,6 @@
 from dotenv import load_dotenv
 import os
-from smolagents import CodeAgent, LiteLLMModel, DuckDuckGoSearchTool, tool
+from smolagents import CodeAgent, LiteLLMModel, DuckDuckGoSearchTool, tool, ToolCallingAgent
 import datetime
 
 
@@ -63,4 +63,10 @@ def agent_with_import():
         """
     )
 
-agent_with_import()
+# Tool calling agent
+def tool_calling_agent():
+    agent = ToolCallingAgent(tools=[DuckDuckGoSearchTool()], model=model)
+    agent.run("Search for the best music recommendations for a party at the Wayne's mansion.")
+
+tool_calling_agent()
+

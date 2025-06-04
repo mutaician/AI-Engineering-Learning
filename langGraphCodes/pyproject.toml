@@ -1,0 +1,20 @@
+[project]
+name = "langgraphcodes"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "bs4>=0.0.2",
+    "chromadb>=1.0.12",
+    "dotenv>=0.9.9",
+    "ipykernel>=6.29.5",
+    "langchain>=0.3.25",
+    "langchain-anthropic>=0.3.14",
+    "langchain-chroma>=0.2.4",
+    "langchain-community>=0.3.24",
+    "langchain-google-genai>=2.1.5",
+    "langgraph>=0.4.7",
+    "pip>=25.1.1",
+    "pypdf>=5.6.0",
+]

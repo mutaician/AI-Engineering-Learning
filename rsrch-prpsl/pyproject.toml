@@ -1,0 +1,18 @@
+[project]
+name = "rsrch-prpsl"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "dotenv>=0.9.9",
+    "ipykernel>=6.30.0",
+    "ipython>=9.4.0",
+    "langchain-chroma>=0.2.5",
+    "langchain-community>=0.3.27",
+    "langchain-openai>=0.3.28",
+    "langchain[google-genai]>=0.3.27",
+    "langgraph>=0.6.0",
+    "pandas>=2.3.1",
+    "pip>=25.1.1",
+]

@@ -1,3 +1,5 @@
+# Messed up with my local git repo setup test but all credits of this directory/folder goes to https://github.com/readytensor/rt-repo-assessment 
+
 # This folder has all the resources I am using while learning about Agentic AI Developer Certification Program by [readytensor](https://app.readytensor.ai/hubs/ready_tensor_certifications)
 
 ## Real-World Applications of Agentic AI

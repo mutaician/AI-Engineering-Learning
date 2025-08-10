@@ -1,0 +1,78 @@
+Environment and Dependencies:
+  Dependency Management:
+    dependencies_listed:
+      name: Dependencies Listed
+      description: Repository clearly lists all project dependencies in standard formats
+        (requirements.txt, setup.py, pyproject.toml,Pipfile.lock, setup.py, environment.yml etc.).
+      essential: true
+      professional: true
+      elite: true
+      instructions: |
+       Look for any dependency management files such as requirements.txt, setup.py, pyproject.toml, Pipfile, poetry.lock, uv.lock, package.json, etc.
+       The criterion is satisfied if there is at least one such file.
+       There might be dependency management files that are not mentioned in the prompt. If any such files are present, this criterion should be satisfied.
+    pinned_dependencies:
+      name: Pinned Dependencies
+      description: Dependencies have specific versions to ensure reproducibility (preferably
+        production dependencies pinned).
+      essential: false
+      professional: true
+      elite: true
+      based_on: file_content
+      aggregation: OR
+    dependency_groups:
+      name: Dependency Groups
+      description: Dependencies organized into logical groups (core, dev, test) via
+        separate requirement files (e.g., requirements-dev.txt) or in configuration
+        files (e.g., pyproject.toml, setup.py extras_require).
+      essential: false
+      professional: true
+      elite: true
+      based_on: file_content
+      aggregation: OR
+      include_extensions:
+        - .txt
+        - .toml
+        - .py
+        - .lock
+  Environment Configuration:
+    python_version_specified:
+      name: Python Version Specified
+      description: Required Python version(s) specified in configuration files like
+        pyproject.toml, setup.py, runtime.txt, or .python-version.
+      essential: false
+      professional: true
+      elite: true
+    environment_managed:
+      name: Environment Management
+      description: Repository contains configuration for virtual environments such
+        as environment.yml (conda), Pipfile (pipenv), poetry.lock (poetry), uv.lock (uv), or similar environment management files.
+        configurations, or similar environment management files.
+      essential: false
+      professional: true
+      elite: true
+      instructions: |
+       Environment configuration files can be any of the well-known environment management files even if they are not specifically mentioned in the prompt.
+       If any such files are present, this criterion should be satisfied.
+    reproducible_environment:
+      name: Reproducible Environment
+      description: Lockfiles or exact environment specifications provided.
+      essential: false
+      professional: false
+      elite: true
+      instructions: Look for any lockfiles or exact environment specifications provided. If one is found, the criterion is satisfied.
+    gpu_requirements_documented:
+      name: GPU Requirements Documented
+      description: GPU-specific dependencies or requirements indicated in configuration
+        files (e.g., tensorflow-gpu in requirements.txt, CUDA versions in environment
+        files, GPU constraints in Dockerfiles).
+      essential: false
+      professional: false
+      elite: true
+  Advanced Configuration:
+    containerization:
+      name: Containerization
+      description: Provides Dockerfile or equivalent containerization.
+      essential: false
+      professional: false
+      elite: true

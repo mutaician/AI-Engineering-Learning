@@ -1,0 +1,12 @@
+.venv
+ venv
+.env
+__pycache__
+.DS_Store
+venv
+
+
+test.ipynb
+test.py
+
+criteria.csv

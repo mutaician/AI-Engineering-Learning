@@ -1,0 +1,321 @@
+Code Quality:
+  General Structure:
+    functions_and_classes:
+      name: Modular Code Organization
+      description: Code organized into functions/methods rather than monolithic scripts
+      essential: true
+      professional: true
+      elite: true
+      include_extensions:
+      - .py
+      - .ipynb
+      aggregation: OR
+      based_on: file_content
+    script_length:
+      name: Script Length Control
+      description: Individual scripts/modules have reasonable length (< 500 lines)
+      essential: true
+      professional: true
+      elite: true
+      based_on: custom_logic
+      args:
+        max_script_length: 500
+    function_length:
+      name: Function Length Control
+      description: Functions and methods are reasonably sized (< 100 lines)
+      essential: false
+      professional: true
+      elite: true
+      include_extensions:
+      - .py
+      - .ipynb
+      aggregation: AND
+      based_on: file_content
+      instructions: |
+       If the file does not contain functions, this criterion should be satisfied.
+       The criteria may be violated if at least one function exists in the file and exceeds the defined limit.
+    code_duplication:
+      name: Code Duplication Check
+      description: Limited code duplication (< 10% duplicate code)
+      essential: false
+      professional: true
+      elite: true
+      include_extensions:
+      - .py
+      - .ipynb
+      aggregation: AND
+      based_on: file_content
+  Configuration:
+    centralized_config:
+      name: Configuration File Presence
+      description: Dedicated configuration files exist (e.g., config.py, config.json,
+        .env)
+      essential: true
+      professional: true
+      elite: true
+      include_extensions:
+      - .py
+      - .json
+      - .yaml
+      aggregation: OR
+      based_on: file_content
+    no_hardcoded_constants:
+      name: Hardcoded Value Detection
+      description: Limited hardcoded constants in core code
+      essential: false
+      professional: true
+      elite: true
+      include_extensions:
+      - .py
+      - .ipynb
+      aggregation: AND
+      based_on: file_content
+      instructions: |
+       Storing fixed values in variables such as Pi, e, names of llms or api keys is allowed and should not be considered as hardcoded constants.
+    env_variables:
+      name: Environment Variable Usage
+      description: References to environment variables for sensitive configurations
+      essential: false
+      professional: true
+      elite: true
+      aggregation: OR
+      based_on: file_content
+      instructions: |
+        Look for any references to environment variables in the codebase. For example, os.getenv('API_KEY') or load_dotenv() or any other function that loads/uses environment variables.
+  Logging:
+    logging_basic:
+      name: Logging Import Detection
+      description: Evidence of logging library usage
+      essential: false
+      professional: true
+      elite: true
+      include_extensions:
+      - .py
+      - .ipynb
+      aggregation: OR
+      based_on: file_content
+    logging_advanced:
+      name: Logging Configuration
+      description: Presence of logging configuration (levels, formats)
+      essential: false
+      professional: false
+      elite: true
+      include_extensions:
+      - .py
+      - .ipynb
+      aggregation: OR
+      based_on: file_content
+  Error Handling:
+    error_handling_basic:
+      name: Exception Usage
+      description: Presence of try/except blocks in the codebase
+      essential: true
+      professional: true
+      elite: true
+      include_extensions:
+      - .py
+      - .ipynb
+      aggregation: OR
+      based_on: file_content
+      instructions: |
+       If the script is guaranteed to not raise an exception, this criterion should be scored 1. 
+       For example, a file that only contains print statements should be scored 1.
+       A file that only cntains constant variables should be scored 1.
+
+    error_handling_advanced:
+      name: Custom Exception Classes
+      description: Definition of project-specific exception classes
+      essential: false
+      professional: false
+      elite: true
+      include_extensions:
+      - .py
+      - .ipynb
+      aggregation: OR
+      based_on: file_content
+      instructions: |
+       Look for any custom exception classes that are defined in the codebase. If one is found, the criterion is satisfied.
+  Testing:
+    testing_basic:
+      name: Test File Presence
+      description: Existence of test files (test_*.py or *_test.py)
+      essential: false
+      professional: true
+      elite: true
+
+    testing_comprehensive:
+      name: Test Coverage
+      description: Test coverage metrics available (e.g., .coverage file)
+      essential: false
+      professional: false
+      elite: true
+      aggregation: OR
+      based_on: file_content
+    testing_framework:
+      name: Test Framework Usage
+      description: Evidence of test framework (pytest, unittest)
+      essential: false
+      professional: true
+      elite: true
+      include_extensions:
+      - .py
+      - .ipynb
+      aggregation: OR
+      based_on: file_content
+      instructions: |
+       Focus on the content of testing files. Files that do not contain any testing code should be scored 0.
+  Documentation:
+    uses_docstrings:
+      name: Docstring Presence
+      description: Functions, classes, modules have docstrings
+      essential: false
+      professional: true
+      elite: true
+      include_extensions:
+      - .py
+      - .ipynb
+      aggregation: AND
+      based_on: file_content
+      instructions: If the file does not contain functions and classes, this criterion should be satisfied.
+    complete_docstrings:
+      name: Docstring Completeness
+      description: Docstrings include parameters and return sections
+      essential: false
+      professional: true
+      elite: true
+      include_extensions:
+      - .py
+      - .ipynb
+      aggregation: AND
+      based_on: file_content
+      instructions: If the file does not contain functions and classes, this criterion should be satisfied. Do not look for return values in classes docstrings.
+    type_hints:
+      name: Type Hint Usage
+      description: Presence of type hints in function signatures
+      essential: false
+      professional: true
+      elite: true
+      include_extensions:
+      - .py
+      - .ipynb
+      aggregation: AND
+      based_on: file_content
+      instructions: If the file does not contain functions and classes, this criterion should be satisfied.
+  Style:
+    code_style_tools:
+      name: Style Checker Configuration
+      description: Presence of style checker configuration files
+      essential: false
+      professional: true
+      elite: true
+      aggregation: OR
+      based_on: file_content
+    code_style_consistency:
+      name: Consistent Formatting
+      description: Evidence of consistent indentation and formatting
+      essential: false
+      professional: true
+      elite: true
+      aggregation: OR
+      based_on: file_content
+  Complexity:
+    class_size:
+      name: Class Size Control
+      description: Classes have reasonable number of methods (< 20)
+      essential: false
+      professional: true
+      elite: true
+      include_extensions:
+      - .py
+      - .ipynb
+      aggregation: AND
+      based_on: file_content
+      instructions: If the file does not contain classes, this criterion should be satisfied.
+  AI/ML Specific:
+    seed_setting:
+      name: Random Seed Setting
+      description: Explicit random seed setting in code
+      essential: true
+      professional: true
+      elite: true
+      include_extensions:
+      - .py
+      - .ipynb
+      aggregation: AND
+      based_on: file_content
+      instructions: |
+       If the script is deterministic, this criterion should be satisfied.
+       Only check for random seed setting if the script is not deterministic.
+       For example, code that contains random sampling, train/test split, etc. should be checked for random seed setting.
+    data_quality_checks:
+      name: Data Validation Code
+      description: Input data validation logic present
+      essential: false
+      professional: true
+      elite: true
+      include_extensions:
+      - .py
+      - .ipynb
+      aggregation: OR
+      based_on: file_content
+    model_organization:
+      name: Model File Organization
+      description: ML models in dedicated modules/classes
+      essential: false
+      professional: true
+      elite: true
+      include_extensions:
+      - .py
+      - .ipynb
+      aggregation: OR
+      based_on: file_content
+  Notebook Specific:
+    notebook_cell_size:
+      name: Notebook Code Structure
+      description: Cells organized with fewer than 100 lines per cell
+      essential: true
+      professional: true
+      elite: true
+      include_extensions:
+      - .ipynb
+      aggregation: AND
+      based_on: file_content
+    notebook_documentation:
+      name: Notebook Documentation
+      description: Notebooks include markdown cells (>10% of cells)
+      essential: true
+      professional: true
+      elite: true
+      include_extensions:
+      - .ipynb
+      aggregation: AND
+      based_on: file_content
+    notebook_imports:
+      name: Notebook Imports
+      description: Evidence of importing custom modules (not just standard libraries)
+      essential: false
+      professional: true
+      elite: true
+      include_extensions:
+      - .ipynb
+      aggregation: OR
+      based_on: file_content
+    notebook_output_management:
+      name: Clean Notebook Outputs
+      description: Either consistently cleared outputs or only relevant outputs retained
+      essential: false
+      professional: true
+      elite: true
+      include_extensions:
+      - .ipynb
+      aggregation: AND
+      based_on: file_content
+  Package Structure:
+    package_structure:
+      name: Package Organization
+      description: Proper package structure with init.py files
+      essential: false
+      professional: true
+      elite: true
+      aggregation: OR
+      based_on: file_content

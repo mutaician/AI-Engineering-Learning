@@ -1,0 +1,43 @@
+tracked_extensions:
+  - .py
+  - .ipynb
+  - .json
+  - .yaml
+  - .txt
+  - .toml
+  -  pdf
+  - .md
+  - .yml
+  - .lock
+  
+
+text_extensions:
+  - .txt
+  - .md
+  - .csv
+  - .tsv
+  - .json
+  - .yaml
+  - .py
+  - .ipynb
+  - .toml
+  - .cfg
+  - .yml
+  - .lock
+
+ignored_names:
+  - .env
+  - .venv
+  - venv
+  - env
+  - model_inputs_outputs
+  - .git
+  - .ipynb_checkpoints
+  - __pycache__
+  - .github
+  - .DS_Store
+
+
+script_extensions:
+  - .py
+  - .ipynb

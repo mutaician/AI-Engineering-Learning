@@ -1,0 +1,2169 @@
+[
+    {
+        "scores": {
+            "functions_and_classes": {
+                "score": 0,
+                "explanation": "No functions or classes defined in the file; criterion targets structuring code into functions/classes."
+            },
+            "function_length": {
+                "score": 1,
+                "explanation": "No function definitions exist; length control criterion is satisfied."
+            },
+            "code_duplication": {
+                "score": 1,
+                "explanation": "No detectable code duplication; the file is minimal and has unique statements."
+            },
+            "centralized_config": {
+                "score": 0,
+                "explanation": "No dedicated configuration files shown in this file snippet."
+            },
+            "no_hardcoded_constants": {
+                "score": 1,
+                "explanation": "Uses string literals for path construction which are allowed per the given instructions and not treated as hardcoded constants."
+            },
+            "env_variables": {
+                "score": 0,
+                "explanation": "No environment variable usage (e.g., os.getenv, dotenv) is present."
+            },
+            "logging_basic": {
+                "score": 0,
+                "explanation": "No logging usage detected."
+            },
+            "logging_advanced": {
+                "score": 0,
+                "explanation": "No logging configuration present."
+            },
+            "error_handling_basic": {
+                "score": 1,
+                "explanation": "No try/except blocks; the snippet performs simple path manipulations and is effectively non-raising."
+            },
+            "error_handling_advanced": {
+                "score": 0,
+                "explanation": "No custom exception classes defined."
+            },
+            "testing_comprehensive": {
+                "score": 0,
+                "explanation": "No test coverage metrics present."
+            },
+            "testing_framework": {
+                "score": 0,
+                "explanation": "No test framework usage detected."
+            },
+            "uses_docstrings": {
+                "score": 1,
+                "explanation": "File contains no functions or classes; per guidance, docstring presence criterion is considered satisfied."
+            },
+            "complete_docstrings": {
+                "score": 1,
+                "explanation": "With no functions/classes, docstring completeness is considered satisfied."
+            },
+            "type_hints": {
+                "score": 1,
+                "explanation": "No functions/classes to annotate; type-hint criterion is satisfied."
+            },
+            "code_style_tools": {
+                "score": 0,
+                "explanation": "No code style/config tool files (e.g., flake8/black/config) are present in this snippet."
+            },
+            "code_style_consistency": {
+                "score": 0,
+                "explanation": "No evidence of code style tooling or enforcement; basic indentation appears conventional in this small snippet."
+            },
+            "class_size": {
+                "score": 1,
+                "explanation": "No classes present; class-size criterion is satisfied."
+            },
+            "seed_setting": {
+                "score": 1,
+                "explanation": "The code is deterministic and contains no randomness or seeds."
+            },
+            "data_quality_checks": {
+                "score": 0,
+                "explanation": "No input data validation logic present."
+            },
+            "model_organization": {
+                "score": 0,
+                "explanation": "No ML models or model organization structures in this file."
+            },
+            "package_structure": {
+                "score": 0,
+                "explanation": "Not a package; no __init__.py present."
+            },
+            "pinned_dependencies": {
+                "score": 0,
+                "explanation": "No dependencies declared or pinned in this file."
+            },
+            "dependency_groups": {
+                "score": 0,
+                "explanation": "No dependencies grouped by core/dev/test in this file."
+            },
+            "environment_dependency_information": {
+                "score": 0,
+                "explanation": "No explicit environment/dependency management information provided."
+            },
+            "key_parameters_explained": {
+                "score": 0,
+                "explanation": "No key modeling parameters documented in this file."
+            }
+        },
+        "file_path": "/home/mutaician/AIEngineerLearning/ready-tensor-course/temp/rt-repo-assessment/data/inputs/rt-repo-assessment/tests/conftest.py"
+    },
+    {
+        "scores": {
+            "functions_and_classes": {
+                "score": 1,
+                "explanation": "The file defines multiple test functions and a fixture, indicating code organized into functions/methods."
+            },
+            "function_length": {
+                "score": 1,
+                "explanation": "Functions are reasonably sized and do not appear to exceed typical limits."
+            },
+            "code_duplication": {
+                "score": 0,
+                "explanation": "There are repeated test patterns across multiple test cases; duplication likely exceeds the 10% threshold."
+            },
+            "centralized_config": {
+                "score": 0,
+                "explanation": "No dedicated configuration files observed in this file."
+            },
+            "no_hardcoded_constants": {
+                "score": 1,
+                "explanation": "No hardcoded sensitive constants (e.g., API keys) detected; strings used are test artifacts."
+            },
+            "env_variables": {
+                "score": 0,
+                "explanation": "No environment variable usage (e.g., os.getenv, load_dotenv) detected."
+            },
+            "logging_basic": {
+                "score": 0,
+                "explanation": "No logging usage detected in this file."
+            },
+            "logging_advanced": {
+                "score": 0,
+                "explanation": "No logging configuration detected."
+            },
+            "error_handling_basic": {
+                "score": 0,
+                "explanation": "No try/except blocks present; basic error handling not demonstrated in this file."
+            },
+            "error_handling_advanced": {
+                "score": 0,
+                "explanation": "No custom exception classes defined."
+            },
+            "testing_comprehensive": {
+                "score": 0,
+                "explanation": "No test coverage metadata (e.g., .coverage) observed."
+            },
+            "testing_framework": {
+                "score": 1,
+                "explanation": "File uses pytest-style tests with fixtures and test_ functions."
+            },
+            "uses_docstrings": {
+                "score": 1,
+                "explanation": "Functions and fixtures include docstrings where present."
+            },
+            "complete_docstrings": {
+                "score": 0,
+                "explanation": "Docstrings do not consistently include parameter and return sections."
+            },
+            "type_hints": {
+                "score": 1,
+                "explanation": "Function signatures include Python type hints."
+            },
+            "code_style_tools": {
+                "score": 0,
+                "explanation": "No style-checker configuration files observed."
+            },
+            "code_style_consistency": {
+                "score": 1,
+                "explanation": "Indentation and formatting are consistent throughout."
+            },
+            "class_size": {
+                "score": 1,
+                "explanation": "No classes defined; this criterion is satisfied."
+            },
+            "seed_setting": {
+                "score": 1,
+                "explanation": "The file is deterministic (no random seeds or nondeterministic operations used)."
+            },
+            "data_quality_checks": {
+                "score": 0,
+                "explanation": "No data input validation checks present."
+            },
+            "model_organization": {
+                "score": 0,
+                "explanation": "No ML models or dedicated modeling modules observed."
+            },
+            "package_structure": {
+                "score": 0,
+                "explanation": "No package init structure observed in this standalone test file."
+            },
+            "pinned_dependencies": {
+                "score": 0,
+                "explanation": "No dependency version pinning observed in this file."
+            },
+            "dependency_groups": {
+                "score": 0,
+                "explanation": "No dependency grouping observed."
+            },
+            "environment_dependency_information": {
+                "score": 0,
+                "explanation": "No environment/dependency information provided."
+            },
+            "key_parameters_explained": {
+                "score": 0,
+                "explanation": "No key parameters explained."
+            }
+        },
+        "file_path": "/home/mutaician/AIEngineerLearning/ready-tensor-course/temp/rt-repo-assessment/data/inputs/rt-repo-assessment/tests/test_project_validators.py"
+    },
+    {
+        "scores": {
+            "functions_and_classes": {
+                "score": 1,
+                "explanation": "File defines three functions: download_project, get_repo_metadata, and format_criterion. None exceed typical function length limits; all are well under 100 lines."
+            },
+            "function_length": {
+                "score": 1,
+                "explanation": "All functions are short and under 100 lines."
+            },
+            "code_duplication": {
+                "score": 1,
+                "explanation": "No noticeable code duplication beyond standard imports and simple helper functions. (Note: This file is compact and composed of distinct utility functions.)"
+            },
+            "centralized_config": {
+                "score": 1,
+                "explanation": "Uses centralized configuration via paths and config modules (paths, PROMPTS_FPATH, CONFIG_FPATH)."
+            },
+            "no_hardcoded_constants": {
+                "score": 0,
+                "explanation": "Contains a hardcoded literal used for retry logic: retry_attempts < 3. No separate constant or descriptive name for this limit."
+            },
+            "env_variables": {
+                "score": 0,
+                "explanation": "No environment-variable usage detected (no os.getenv, dotenv, etc.). The code uses os.path but not environment variables."
+            },
+            "logging_basic": {
+                "score": 1,
+                "explanation": "Uses a logger via get_logger and logs errors/info (logger.error and logger.info are present)."
+            },
+            "logging_advanced": {
+                "score": 0,
+                "explanation": "No explicit logging configuration (levels/formatting) is shown beyond basic usage."
+            },
+            "error_handling_basic": {
+                "score": 0,
+                "explanation": "The code does use try/except around repo download, but the script is not guaranteed to be exception-free; thus does not meet the basic criterion as fully robust error-free code."
+            },
+            "error_handling_advanced": {
+                "score": 0,
+                "explanation": "No custom exception classes are defined; uses built-in exceptions (e.g., NotADirectoryError) instead."
+            },
+            "testing_comprehensive": {
+                "score": 0,
+                "explanation": "No test files or test-related content detected in this file."
+            },
+            "testing_framework": {
+                "score": 0,
+                "explanation": "No test framework usage (pytest/unittest) evident in this file."
+            },
+            "uses_docstrings": {
+                "score": 0,
+                "explanation": "No module or function docstrings are present; only normal code and a brief inline format_criterion doc-like text within a string."
+            },
+            "complete_docstrings": {
+                "score": 0,
+                "explanation": "Since there are functions but no docstrings, this criterion is not satisfied."
+            },
+            "type_hints": {
+                "score": 1,
+                "explanation": "Type hints are used in function signatures (e.g., repo_url: str -> str, repo_dir_path: str, -> Dict[str, Any])."
+            },
+            "code_style_tools": {
+                "score": 1,
+                "explanation": "Code uses imports and is organized with helper functions. No linter configuration is shown here, but code style appears clean and readable."
+            },
+            "code_style_consistency": {
+                "score": 1,
+                "explanation": "Consistent formatting, reasonable indentation, and clear structure throughout the file."
+            },
+            "class_size": {
+                "score": 1,
+                "explanation": "No classes are defined; per criterion, absence of classes satisfies this criterion."
+            },
+            "seed_setting": {
+                "score": 1,
+                "explanation": "No randomness or seed-dependent code detected; the script is deterministic in its logic (threading and LLM usage do not imply a code-level randomness control)."
+            },
+            "data_quality_checks": {
+                "score": 0,
+                "explanation": "No explicit input data validation logic beyond file and repo checks; this criterion is not clearly satisfied in this file."
+            },
+            "model_organization": {
+                "score": 1,
+                "explanation": "Code is organized into modular functions and uses imports to separate concerns."
+            },
+            "package_structure": {
+                "score": 1,
+                "explanation": "Uses module imports and appears suitable for packaging (no explicit __init__.py presence shown, but structure is conventional)."
+            },
+            "pinned_dependencies": {
+                "score": 0,
+                "explanation": "No explicit dependency pinning is visible in this snippet (imports refer to modules, but no requirements file or pinned versions shown here)."
+            },
+            "dependency_groups": {
+                "score": 1,
+                "explanation": "Code references configuration and scoring logic in a grouped manner via generators/logic modules, indicating logical dependency grouping."
+            },
+            "environment_dependency_information": {
+                "score": 1,
+                "explanation": "Configuration/read paths and environment setup via config and paths modules; environment management is documented in config usage."
+            },
+            "key_parameters_explained": {
+                "score": 1,
+                "explanation": "Key modeling parameters and considerations are defined and used in prompt assembly and criterion formatting."
+            }
+        },
+        "file_path": "/home/mutaician/AIEngineerLearning/ready-tensor-course/temp/rt-repo-assessment/data/inputs/rt-repo-assessment/src/main.py"
+    },
+    {
+        "scores": {
+            "functions_and_classes": {
+                "score": 1,
+                "explanation": "The file defines several small, well-scoped functions (read_yaml_file, write_yaml_file, read_json_file, write_json_file, get_dir_size_mb)."
+            },
+            "function_length": {
+                "score": 1,
+                "explanation": "All functions are reasonably sized and appear to be under typical length limits."
+            },
+            "code_duplication": {
+                "score": 1,
+                "explanation": "No notable code duplication; functions are distinct and purposeful."
+            },
+            "centralized_config": {
+                "score": 0,
+                "explanation": "No dedicated configuration files (e.g., config.py/json/.env) are present in this file."
+            },
+            "no_hardcoded_constants": {
+                "score": 1,
+                "explanation": "No disallowed hardcoded constants; numeric literals (e.g., 1024) are general constants used for units conversion."
+            },
+            "env_variables": {
+                "score": 0,
+                "explanation": "No environment variable usage detected (e.g., os.getenv, load_dotenv)."
+            },
+            "logging_basic": {
+                "score": 0,
+                "explanation": "No logging usage detected (no import or usage of logging)."
+            },
+            "logging_advanced": {
+                "score": 0,
+                "explanation": "No logging configuration present."
+            },
+            "error_handling_basic": {
+                "score": 0,
+                "explanation": "No try/except blocks present; potential IO operations could raise exceptions but are not explicitly handled."
+            },
+            "error_handling_advanced": {
+                "score": 0,
+                "explanation": "No custom exception classes defined."
+            },
+            "testing_comprehensive": {
+                "score": 0,
+                "explanation": "No test coverage metrics or test files detected in this file."
+            },
+            "testing_framework": {
+                "score": 0,
+                "explanation": "No testing framework usage detected."
+            },
+            "uses_docstrings": {
+                "score": 1,
+                "explanation": "All functions include docstrings."
+            },
+            "complete_docstrings": {
+                "score": 0,
+                "explanation": "Docstrings are not consistently complete with parameter and return sections for all functions."
+            },
+            "type_hints": {
+                "score": 1,
+                "explanation": "Function signatures include type hints (e.g., file_path: str, data: Union[Dict, List])."
+            },
+            "code_style_tools": {
+                "score": 0,
+                "explanation": "No style-check configuration files present in this file."
+            },
+            "code_style_consistency": {
+                "score": 1,
+                "explanation": "Indentation and formatting are consistent throughout the file."
+            },
+            "class_size": {
+                "score": 1,
+                "explanation": "There are no classes; this criterion is satisfied by the absence of classes."
+            },
+            "seed_setting": {
+                "score": 1,
+                "explanation": "The file is deterministic (no randomization or seeds used), so seed setting is satisfied."
+            },
+            "data_quality_checks": {
+                "score": 0,
+                "explanation": "No input data validation logic is present."
+            },
+            "model_organization": {
+                "score": 1,
+                "explanation": "No ML models present; vacuously satisfied."
+            },
+            "package_structure": {
+                "score": 0,
+                "explanation": "No package structure (no __init__.py) evident in this standalone file."
+            },
+            "pinned_dependencies": {
+                "score": 0,
+                "explanation": "No dependency pinning information in this file."
+            },
+            "dependency_groups": {
+                "score": 0,
+                "explanation": "No dependency grouping information in this file."
+            },
+            "environment_dependency_information": {
+                "score": 0,
+                "explanation": "No environment/dependency requirements specified."
+            },
+            "key_parameters_explained": {
+                "score": 0,
+                "explanation": "No documentation of key model/parameters provided."
+            }
+        },
+        "file_path": "/home/mutaician/AIEngineerLearning/ready-tensor-course/temp/rt-repo-assessment/data/inputs/rt-repo-assessment/src/utils/general.py"
+    },
+    {
+        "scores": {
+            "functions_and_classes": {
+                "score": 0,
+                "explanation": "No functions or classes defined in the file."
+            },
+            "function_length": {
+                "score": 1,
+                "explanation": "No function definitions present; criterion satisfied."
+            },
+            "code_duplication": {
+                "score": 1,
+                "explanation": "File is minimal with no duplicated code blocks."
+            },
+            "centralized_config": {
+                "score": 1,
+                "explanation": "Relies on YAML/config via imported modules; no hardcoded config scattered."
+            },
+            "no_hardcoded_constants": {
+                "score": 1,
+                "explanation": "No hardcoded constant values are used beyond standard module-level exports; relies on config data."
+            },
+            "env_variables": {
+                "score": 0,
+                "explanation": "No environment variable usage detected (e.g., os.getenv, load_dotenv]."
+            },
+            "logging_basic": {
+                "score": 0,
+                "explanation": "No logging usage detected."
+            },
+            "logging_advanced": {
+                "score": 0,
+                "explanation": "No logging configuration detected."
+            },
+            "error_handling_basic": {
+                "score": 0,
+                "explanation": "No try/except blocks; not guaranteed to be exception-free; thus criteria not satisfied."
+            },
+            "error_handling_advanced": {
+                "score": 0,
+                "explanation": "No custom exception classes defined."
+            },
+            "testing_comprehensive": {
+                "score": 0,
+                "explanation": "No tests or coverage metrics present."
+            },
+            "testing_framework": {
+                "score": 0,
+                "explanation": "No test framework usage detected."
+            },
+            "uses_docstrings": {
+                "score": 1,
+                "explanation": "No functions/classes; per instructions, docstring presence criterion is satisfied."
+            },
+            "complete_docstrings": {
+                "score": 1,
+                "explanation": "No functions/classes; per instructions, docstring completeness criterion is satisfied."
+            },
+            "type_hints": {
+                "score": 1,
+                "explanation": "No functions/classes to type-hint; criterion satisfied."
+            },
+            "code_style_tools": {
+                "score": 0,
+                "explanation": "No style checker configuration detected."
+            },
+            "code_style_consistency": {
+                "score": 1,
+                "explanation": "Minimal code with consistent formatting; satisfies basic style."
+            },
+            "class_size": {
+                "score": 1,
+                "explanation": "No classes present; criterion satisfied."
+            },
+            "seed_setting": {
+                "score": 1,
+                "explanation": "Code is deterministic; no random seed setting required."
+            },
+            "data_quality_checks": {
+                "score": 0,
+                "explanation": "No input data validation logic present."
+            },
+            "model_organization": {
+                "score": 0,
+                "explanation": "No ML model organization in this file."
+            },
+            "package_structure": {
+                "score": 1,
+                "explanation": "Module exports are clearly defined and structured."
+            },
+            "pinned_dependencies": {
+                "score": 0,
+                "explanation": "No dependency pinning information present."
+            },
+            "dependency_groups": {
+                "score": 0,
+                "explanation": "No dependencies grouped via files or configuration."
+            },
+            "environment_dependency_information": {
+                "score": 1,
+                "explanation": "Environment/dependency management implied via read_yaml_file and config paths; no explicit version pins needed here."
+            },
+            "key_parameters_explained": {
+                "score": 0,
+                "explanation": "No modeling parameters documented in code."
+            }
+        },
+        "file_path": "/home/mutaician/AIEngineerLearning/ready-tensor-course/temp/rt-repo-assessment/data/inputs/rt-repo-assessment/src/utils/__init__.py"
+    },
+    {
+        "scores": {
+            "functions_and_classes": {
+                "score": 0,
+                "explanation": "Not included in this evaluation set; focusing on provided criteria. Note: There is a trailing stray '</file>' token at the end of the file that would cause a syntax error if executed."
+            },
+            "function_length": {
+                "score": 1,
+                "explanation": "All functions are concise and well under the typical 100-line limit. Note: There is a trailing stray '</file>' token at the end of the file that would cause a syntax error if executed."
+            },
+            "code_duplication": {
+                "score": 0,
+                "explanation": "No explicit duplication check performed here. Note: There is a trailing stray '</file>' token at the end of the file."
+            },
+            "centralized_config": {
+                "score": 0,
+                "explanation": "No dedicated configuration file usage detected in this snippet. Note: There is a trailing stray '</file>' token at the end of the file."
+            },
+            "no_hardcoded_constants": {
+                "score": 1,
+                "explanation": "No hardcoded numeric or secret constants are present; the literals used are for file names and doc strings. Note: File ends with stray '</file>' token though."
+            },
+            "env_variables": {
+                "score": 0,
+                "explanation": "No environment variable usage (no os.getenv/load_dotenv or similar). Note: There is a trailing stray '</file>' token at the end."
+            },
+            "logging_basic": {
+                "score": 0,
+                "explanation": "No logging usage detected beyond in-file logger initialization; no explicit logging calls shown. Note: There is a trailing stray '</file>' token at the end."
+            },
+            "logging_advanced": {
+                "score": 0,
+                "explanation": "No logging configuration present. Note: There is a trailing stray '</file>' token at the end."
+            },
+            "error_handling_basic": {
+                "score": 0,
+                "explanation": "There are no try/except blocks to handle exceptions; code may raise on I/O. Note: There is a trailing stray '</file>' token at the end."
+            },
+            "error_handling_advanced": {
+                "score": 0,
+                "explanation": "No custom exception classes defined. Note: There is a trailing stray '</file>' token at the end."
+            },
+            "testing_comprehensive": {
+                "score": 0,
+                "explanation": "No test coverage metrics present in this snippet. Note: There is a trailing stray '</file>' token at the end."
+            },
+            "testing_framework": {
+                "score": 0,
+                "explanation": "No tests or test framework usage detected. Note: There is a trailing stray '</file>' token at the end."
+            },
+            "uses_docstrings": {
+                "score": 1,
+                "explanation": "Functions have docstrings describing purpose and parameters. Note: There is a trailing stray '</file>' token at the end."
+            },
+            "complete_docstrings": {
+                "score": 0,
+                "explanation": "Not all docstrings include parameter and return sections (e.g., has_setup_py, get_script_lengths). Note: There is a trailing stray '</file>' token at the end."
+            },
+            "type_hints": {
+                "score": 1,
+                "explanation": "Type hints are present on all function signatures. Note: There is a trailing stray '</file>' token at the end."
+            },
+            "code_style_tools": {
+                "score": 0,
+                "explanation": "No explicit style-check configuration shown. Note: There is a trailing stray '</file>' token at the end."
+            },
+            "code_style_consistency": {
+                "score": 0,
+                "explanation": "Overall formatting appears reasonably consistent; this criterion would require automated checks. Note: There is a trailing stray '</file>' token at the end."
+            },
+            "class_size": {
+                "score": 1,
+                "explanation": "No classes defined in the file. Note: There is a trailing stray '</file>' token at the end."
+            },
+            "seed_setting": {
+                "score": 1,
+                "explanation": "File is deterministic; no randomness or seed needed. Note: There is a trailing stray '</file>' token at the end."
+            },
+            "data_quality_checks": {
+                "score": 0,
+                "explanation": "No data validation logic observed. Note: There is a trailing stray '</file>' token at the end."
+            },
+            "model_organization": {
+                "score": 0,
+                "explanation": "No ML model organization modules evident in this snippet. Note: There is a trailing stray '</file>' token at the end."
+            },
+            "package_structure": {
+                "score": 0,
+                "explanation": "No package init or package structure visible in this small snippet. Note: There is a trailing stray '</file>' token at the end."
+            },
+            "pinned_dependencies": {
+                "score": 0,
+                "explanation": "No dependency pinning visible in this snippet. Note: There is a trailing stray '</file>' token at the end."
+            },
+            "dependency_groups": {
+                "score": 0,
+                "explanation": "No dependency group configuration visible in this snippet. Note: There is a trailing stray '</file>' token at the end."
+            },
+            "environment_dependency_information": {
+                "score": 0,
+                "explanation": "No explicit environment/dependency management information shown. Note: There is a trailing stray '</file>' token at the end."
+            },
+            "key_parameters_explained": {
+                "score": 0,
+                "explanation": "No documentation of key modeling parameters in this code snippet. Note: There is a trailing stray '</file>' token at the end."
+            }
+        },
+        "file_path": "/home/mutaician/AIEngineerLearning/ready-tensor-course/temp/rt-repo-assessment/data/inputs/rt-repo-assessment/src/utils/project_validators.py"
+    },
+    {
+        "scores": {
+            "functions_and_classes": {
+                "score": 1,
+                "explanation": "The file defines a function get_llm and does not rely on top-level script logic, showing functional organization."
+            },
+            "function_length": {
+                "score": 1,
+                "explanation": "A single function is reasonably sized (well under 100 lines); no overly long functions."
+            },
+            "code_duplication": {
+                "score": 1,
+                "explanation": "No duplicate code blocks are evident; code is concise with a single function and setup."
+            },
+            "centralized_config": {
+                "score": 0,
+                "explanation": "There is no dedicated configuration file (e.g., config.py, config.json); configuration is inline and via environment variables."
+            },
+            "no_hardcoded_constants": {
+                "score": 1,
+                "explanation": "String literals for llm IDs are constants and allowed per guidance; no sensitive or hardcoded values are exposed."
+            },
+            "env_variables": {
+                "score": 1,
+                "explanation": "Uses load_dotenv() and os.environ to access environment variables, complying with environment variable usage."
+            },
+            "logging_basic": {
+                "score": 0,
+                "explanation": "No logging usage is present (no import of logging or logging calls)."
+            },
+            "logging_advanced": {
+                "score": 0,
+                "explanation": "No logging configuration or advanced logging usage detected."
+            },
+            "error_handling_basic": {
+                "score": 0,
+                "explanation": "get_llm can raise ValueError for invalid IDs; the code is not guaranteed to be exception-free."
+            },
+            "error_handling_advanced": {
+                "score": 0,
+                "explanation": "No custom exception classes defined in the file."
+            },
+            "testing_comprehensive": {
+                "score": 0,
+                "explanation": "No testing artifacts (tests/coverage) present in the file."
+            },
+            "testing_framework": {
+                "score": 0,
+                "explanation": "No testing framework usage detected in this file."
+            },
+            "uses_docstrings": {
+                "score": 1,
+                "explanation": "The function get_llm includes a docstring documenting its purpose, parameters, and return value."
+            },
+            "complete_docstrings": {
+                "score": 1,
+                "explanation": "Docstring for get_llm includes Args, Returns, and Raises sections, satisfying completeness."
+            },
+            "type_hints": {
+                "score": 1,
+                "explanation": "Function signature uses type hints (llm: str) -> BaseChatModel."
+            },
+            "code_style_tools": {
+                "score": 0,
+                "explanation": "No style-check configuration files (e.g., .flake8, pyproject.toml) detected in this snippet."
+            },
+            "code_style_consistency": {
+                "score": 1,
+                "explanation": "Code formatting is consistent with standard Python conventions (indentation, spacing)."
+            },
+            "class_size": {
+                "score": 1,
+                "explanation": "No classes are defined; this criterion is satisfied for files without classes."
+            },
+            "seed_setting": {
+                "score": 1,
+                "explanation": "No randomness is used; the module is deterministic."
+            },
+            "data_quality_checks": {
+                "score": 0,
+                "explanation": "No input data validation logic present beyond basic parameter handling."
+            },
+            "model_organization": {
+                "score": 0,
+                "explanation": "No ML models are defined in dedicated modules/classes."
+            },
+            "package_structure": {
+                "score": 0,
+                "explanation": "No package structure (no __init__.py) is shown; not a package layout."
+            },
+            "pinned_dependencies": {
+                "score": 0,
+                "explanation": "No explicit dependency pins are visible in this snippet."
+            },
+            "dependency_groups": {
+                "score": 0,
+                "explanation": "No separate dependency groups (e.g., requirements-dev.txt) shown."
+            },
+            "environment_dependency_information": {
+                "score": 0,
+                "explanation": "No explicit Python version or environment management information provided."
+            },
+            "key_parameters_explained": {
+                "score": 0,
+                "explanation": "Key modeling parameters are not documented beyond code-level usage."
+            }
+        },
+        "file_path": "/home/mutaician/AIEngineerLearning/ready-tensor-course/temp/rt-repo-assessment/data/inputs/rt-repo-assessment/src/utils/llm.py"
+    },
+    {
+        "scores": {
+            "functions_and_classes": {
+                "score": 0,
+                "explanation": "The file defines multiple standalone functions but does not define any classes."
+            },
+            "function_length": {
+                "score": 0,
+                "explanation": "The file contains several functions, and at least one (download_and_extract_repo) appears long, likely exceeding a typical 100-line limit. This suggests function length control is not satisfied."
+            },
+            "code_duplication": {
+                "score": 1,
+                "explanation": "No evidence of duplicated blocks of code beyond common utility patterns; the file uses standard helper functions without clear duplication."
+            },
+            "centralized_config": {
+                "score": 1,
+                "explanation": "No dedicated centralized configuration files are present in this snippet; configuration appears to be embedded in code via parameters and environment usage is absent."
+            },
+            "no_hardcoded_constants": {
+                "score": 1,
+                "explanation": "No obvious hardcoded constants or secrets are present. Numeric literals (e.g., retry counts, chunk sizes) are assigned to variables or are standard library constants and not magic constants."
+            },
+            "env_variables": {
+                "score": 0,
+                "explanation": "No usage of environment variables (e.g., os.getenv or dotenv loading) is present."
+            },
+            "logging_basic": {
+                "score": 0,
+                "explanation": "No explicit use of a logging library is demonstrated beyond a logger instance; however, the code references a logger, suggesting basic logging is used."
+            },
+            "logging_advanced": {
+                "score": 0,
+                "explanation": "No advanced logging configuration (levels, formats, handlers) is shown beyond basic usage."
+            },
+            "error_handling_basic": {
+                "score": 1,
+                "explanation": "The code uses try/except blocks to handle potential runtime errors (network, file I/O), indicating basic error handling."
+            },
+            "error_handling_advanced": {
+                "score": 0,
+                "explanation": "No custom exception classes are defined in this file."
+            },
+            "testing_comprehensive": {
+                "score": 0,
+                "explanation": "No test files or testing constructs (pytest/unittest) are present in this snippet."
+            },
+            "testing_framework": {
+                "score": 0,
+                "explanation": "No testing framework usage detected in this file."
+            },
+            "uses_docstrings": {
+                "score": 1,
+                "explanation": "Several functions (e.g., download_and_extract_repo, is_repo_public, clone_repo, get_repo_tree) include docstrings describing parameters and return values."
+            },
+            "complete_docstrings": {
+                "score": 0,
+                "explanation": "Not all functions have complete docstrings detailing parameters and returns (e.g., get_readme_content lacks a docstring)."
+            },
+            "type_hints": {
+                "score": 1,
+                "explanation": "Type hints are used in function signatures (Optional[str], List[str], etc.), indicating type hint usage."
+            },
+            "code_style_tools": {
+                "score": 0,
+                "explanation": "No explicit style-checker configuration files (e.g., flake8, mypy) are shown in the snippet."
+            },
+            "code_style_consistency": {
+                "score": 1,
+                "explanation": "Overall code formatting appears consistent with standard Python style in this snippet."
+            },
+            "class_size": {
+                "score": 1,
+                "explanation": "No classes are defined; thus class_size criterion is satisfied."
+            },
+            "seed_setting": {
+                "score": 0,
+                "explanation": "No explicit random seed setting is present."
+            },
+            "data_quality_checks": {
+                "score": 0,
+                "explanation": "No input validation tests or data-quality checks are evident beyond basic IO operations."
+            },
+            "model_organization": {
+                "score": 1,
+                "explanation": "Code is organized into functions within a single module without class-based modeling; module-level organization is acceptable here."
+            },
+            "package_structure": {
+                "score": 1,
+                "explanation": "The file appears to be a single module; there are no package-level structure issues evident in the snippet."
+            },
+            "pinned_dependencies": {
+                "score": 1,
+                "explanation": "No dependency pinning is shown in this snippet; however, since this is a single file, dependency management context is not applicable here."
+            },
+            "dependency_groups": {
+                "score": 1,
+                "explanation": "No dependency grouping is shown in this snippet."
+            },
+            "environment_dependency_information": {
+                "score": 1,
+                "explanation": "Not applicable within this single-file snippet; environment requirement declarations are not present and not verifiable here."
+            },
+            "key_parameters_explained": {
+                "score": 1,
+                "explanation": "Key parameters are explained in the docstrings for several functions."
+            }
+        },
+        "file_path": "/home/mutaician/AIEngineerLearning/ready-tensor-course/temp/rt-repo-assessment/data/inputs/rt-repo-assessment/src/utils/repository.py"
+    },
+    {
+        "scores": {
+            "functions_and_classes": {
+                "score": 1,
+                "explanation": "The file defines a class (TreeNode) and multiple standalone functions (post_order_generator, build_tree, print_tree, etc.). They are structured and used to operate on the class."
+            },
+            "function_length": {
+                "score": 1,
+                "explanation": "All functions/methods are reasonably sized; none exceed 100 lines (the longest ones are build_tree/save_summary/post_order_generator)."
+            },
+            "code_duplication": {
+                "score": 1,
+                "explanation": "No evident duplicated logic; functions serve distinct purposes and share minimal repetitive code."
+            },
+            "centralized_config": {
+                "score": 0,
+                "explanation": "No dedicated configuration file handling is present (no config.py, config.json, or env-based config)."
+            },
+            "no_hardcoded_constants": {
+                "score": 0,
+                "explanation": "There are hardcoded literals such as emoji prefixes '📁 ' and '📄 ', and various message strings (e.g., 'output_dir is required for saving summary') used directly in code, which counts as hardcoded constants."
+            },
+            "env_variables": {
+                "score": 0,
+                "explanation": "No usage of environment variables is present (no os.getenv, dotenv usage, etc.)."
+            },
+            "logging_basic": {
+                "score": 1,
+                "explanation": "A logger is obtained via get_logger and used to log the tree printout in print_tree."
+            },
+            "logging_advanced": {
+                "score": 0,
+                "explanation": "No explicit logging configuration (levels, formats, handlers) is provided beyond the basic usage of a logger instance."
+            },
+            "error_handling_basic": {
+                "score": 0,
+                "explanation": "No try/except blocks are present; potential IO errors could occur during file operations without handling."
+            },
+            "error_handling_advanced": {
+                "score": 0,
+                "explanation": "No custom exception classes are defined."
+            },
+            "testing_comprehensive": {
+                "score": 0,
+                "explanation": "No tests are present in the codebase (no test files or test cases)."
+            },
+            "testing_framework": {
+                "score": 0,
+                "explanation": "No testing framework usage detected (e.g., pytest/unittest files)."
+            },
+            "uses_docstrings": {
+                "score": 1,
+                "explanation": "Docstrings are present for the class and most functions, describing purpose and behavior."
+            },
+            "complete_docstrings": {
+                "score": 1,
+                "explanation": "Docstrings include parameter descriptions (Args) and return/yield information for many functions; class methods also document inputs. "
+            },
+            "type_hints": {
+                "score": 1,
+                "explanation": "Type hints are used in several function signatures (e.g., post_order_generator(node: TreeNode) -> Generator[TreeNode, None, None], build_tree(...): Optional[TreeNode])."
+            },
+            "code_style_tools": {
+                "score": 0,
+                "explanation": "No explicit code style tool configuration files (e.g., flake8, mypy.ini) are present."
+            },
+            "code_style_consistency": {
+                "score": 1,
+                "explanation": "Indentation and general style are consistent; PEP8-like formatting is followed."
+            },
+            "class_size": {
+                "score": 1,
+                "explanation": "The only class defined, TreeNode, has a reasonable size with a small number of methods (well under 20)."
+            },
+            "seed_setting": {
+                "score": 1,
+                "explanation": "There is no randomness in the code; the module appears deterministic."
+            },
+            "data_quality_checks": {
+                "score": 0,
+                "explanation": "No explicit input validation or data quality checks beyond basic path handling are implemented."
+            },
+            "model_organization": {
+                "score": 0,
+                "explanation": "No ML models or organization patterns are present."
+            },
+            "package_structure": {
+                "score": 0,
+                "explanation": "No package init files or module packaging structure is present."
+            },
+            "pinned_dependencies": {
+                "score": 0,
+                "explanation": "No dependency pinning or requirements files are present."
+            },
+            "dependency_groups": {
+                "score": 0,
+                "explanation": "No dependencies grouped into core/dev/test sections."
+            },
+            "environment_dependency_information": {
+                "score": 0,
+                "explanation": "No explicit environment/dependency management information is provided (e.g., Python version, requirements)."
+            },
+            "key_parameters_explained": {
+                "score": 0,
+                "explanation": "Key modeling parameters are not applicable here."
+            }
+        },
+        "file_path": "/home/mutaician/AIEngineerLearning/ready-tensor-course/temp/rt-repo-assessment/data/inputs/rt-repo-assessment/src/directory_scorer/tree.py"
+    },
+    {
+        "scores": {
+            "functions_and_classes": {
+                "score": 1,
+                "explanation": "The file is organized into multiple named functions (count_tokens, score_file, load_document, score_directory_based_on_files, combine_scores) rather than a single script."
+            },
+            "function_length": {
+                "score": 1,
+                "explanation": "All functions appear reasonably sized; none exceed typical 100-line length. This meets the function length control criterion."
+            },
+            "code_duplication": {
+                "score": 1,
+                "explanation": "No obvious code duplication detected; the logic is modular with clearly separated responsibilities."
+            },
+            "centralized_config": {
+                "score": 1,
+                "explanation": "Uses a dedicated config module (from config import paths) and YAML-based prompts/configuration, indicating centralized configuration handling."
+            },
+            "no_hardcoded_constants": {
+                "score": 1,
+                "explanation": "Fixed literals (e.g., chunk sizes, token limits, model names) are standard configuration values and not treated as hardcoded sensitive constants."
+            },
+            "env_variables": {
+                "score": 1,
+                "explanation": "The code imports and calls load_dotenv(), indicating environment variable usage for configuration/secrets."
+            },
+            "logging_basic": {
+                "score": 1,
+                "explanation": "Uses a logger (get_logger) and logs at various levels (info, warning, error), showing basic logging usage."
+            },
+            "logging_advanced": {
+                "score": 0,
+                "explanation": "No explicit logging configuration (formats, levels setup, handlers) is evident beyond basic logging usage."
+            },
+            "error_handling_basic": {
+                "score": 1,
+                "explanation": "Contains try/except around asynchronous task handling (in score_directory_based_on_files) to catch and log exceptions."
+            },
+            "error_handling_advanced": {
+                "score": 0,
+                "explanation": "No custom exception classes are defined in this file."
+            },
+            "testing_comprehensive": {
+                "score": 0,
+                "explanation": "No test files or test framework usage detected in this module."
+            },
+            "testing_framework": {
+                "score": 0,
+                "explanation": "As above, no test framework usage is present."
+            },
+            "uses_docstrings": {
+                "score": 1,
+                "explanation": "Most functions include docstrings describing purpose, inputs, and outputs."
+            },
+            "complete_docstrings": {
+                "score": 1,
+                "explanation": "Docstrings include parameters and return sections for the documented functions."
+            },
+            "type_hints": {
+                "score": 1,
+                "explanation": "Function signatures include type hints (e.g., List, Dict, Tuple, Union, BaseChatModel)."
+            },
+            "code_style_tools": {
+                "score": 0,
+                "explanation": "No explicit style-checker config files are present in this module."
+            },
+            "code_style_consistency": {
+                "score": 1,
+                "explanation": "Code formatting and naming are consistent with common Python conventions."
+            },
+            "class_size": {
+                "score": 1,
+                "explanation": "No classes are defined; this criterion is satisfied by the absence of class definitions."
+            },
+            "seed_setting": {
+                "score": 0,
+                "explanation": "No explicit random seed setting is present; the script appears deterministic by design."
+            },
+            "data_quality_checks": {
+                "score": 0,
+                "explanation": "No explicit input data validation logic for external data is present in this module."
+            },
+            "model_organization": {
+                "score": 1,
+                "explanation": "Code is organized into modules/functions, with clear responsibilities and import-driven structure."
+            },
+            "package_structure": {
+                "score": 1,
+                "explanation": "The file imports and relies on module-level packages; no packaging violations detected (no __init__ issues shown)."
+            },
+            "pinned_dependencies": {
+                "score": 0,
+                "explanation": "No explicit dependency pinning visible in this module."
+            },
+            "dependency_groups": {
+                "score": 0,
+                "explanation": "No explicit dependency grouping (core/dev/test) visible in this module."
+            },
+            "environment_dependency_information": {
+                "score": 1,
+                "explanation": "The module documents environmental and dependency considerations via imports and YAML prompts/configs for reproducibility."
+            },
+            "key_parameters_explained": {
+                "score": 1,
+                "explanation": "Key parameters (token limits, chunk sizes, model names) are used and explained through function signatures and docstrings."
+            }
+        },
+        "file_path": "/home/mutaician/AIEngineerLearning/ready-tensor-course/temp/rt-repo-assessment/data/inputs/rt-repo-assessment/src/directory_scorer/content_based_scorer.py"
+    },
+    {
+        "scores": {
+            "functions_and_classes": {
+                "score": 1,
+                "explanation": "File is composed of multiple functions (no classes). Functions are reasonably small and modular."
+            },
+            "function_length": {
+                "score": 1,
+                "explanation": "All functions appear to be within typical length limits (no obviously oversized functions)."
+            },
+            "code_duplication": {
+                "score": 1,
+                "explanation": "No obvious code duplication detected in the presented snippets; similar patterns are abstracted into small generators, reducing duplication."
+            },
+            "centralized_config": {
+                "score": 1,
+                "explanation": "Code reads configuration via YAML files loaded at runtime (read_yaml_file) and uses a centralized paths module; no hard-coded config values are evident."
+            },
+            "no_hardcoded_constants": {
+                "score": 1,
+                "explanation": "No hard-coded numeric or string constants are visible beyond standard imports and function names; configuration is externalized."
+            },
+            "env_variables": {
+                "score": 0,
+                "explanation": "No usage of environment variables (e.g., os.getenv, load_dotenv) is present in this file."
+            },
+            "logging_basic": {
+                "score": 0,
+                "explanation": "No logging statements are present in this file."
+            },
+            "logging_advanced": {
+                "score": 0,
+                "explanation": "No logging configuration or usage beyond the absence of logs."
+            },
+            "error_handling_basic": {
+                "score": 0,
+                "explanation": "No try/except blocks are present; potential runtime errors from YAML reads or dict accesses are not guarded."
+            },
+            "error_handling_advanced": {
+                "score": 0,
+                "explanation": "No custom exception classes defined."
+            },
+            "testing_comprehensive": {
+                "score": 0,
+                "explanation": "No tests or test scaffolding detected in this file."
+            },
+            "testing_framework": {
+                "score": 0,
+                "explanation": "No testing framework usage (e.g., pytest, unittest) detected."
+            },
+            "uses_docstrings": {
+                "score": 1,
+                "explanation": "Documented functions with docstrings present for clarity."
+            },
+            "complete_docstrings": {
+                "score": 1,
+                "explanation": "Docstrings include parameters and return sections for the documented functions."
+            },
+            "type_hints": {
+                "score": 1,
+                "explanation": "Type hints are used in function signatures (Optional, Generator, etc.)."
+            },
+            "code_style_tools": {
+                "score": 1,
+                "explanation": "Code style appears consistent (import ordering and type hints) and no tool configuration is required within the file."
+            },
+            "code_style_consistency": {
+                "score": 1,
+                "explanation": "Consistent formatting throughout the file; follows standard Python conventions."
+            },
+            "class_size": {
+                "score": 1,
+                "explanation": "No classes defined; this satisfies the criterion for small class sizes (or absence of classes)."
+            },
+            "seed_setting": {
+                "score": 1,
+                "explanation": "No nondeterministic behavior or randomness detected; the file is deterministic."
+            },
+            "data_quality_checks": {
+                "score": 0,
+                "explanation": "No explicit data validation or input checks are evident in this file."
+            },
+            "model_organization": {
+                "score": 1,
+                "explanation": "Code is organized into distinct generator functions and clear data loading sections."
+            },
+            "package_structure": {
+                "score": 1,
+                "explanation": "Module-level structure is conventional with imports, constants, and function definitions."
+            },
+            "pinned_dependencies": {
+                "score": 1,
+                "explanation": "Dependency versions are not specified in this file; relies on external configuration files, which is appropriate for pinning elsewhere."
+            },
+            "dependency_groups": {
+                "score": 1,
+                "explanation": "Dependencies appear to be organized via external YAML/config; no ad-hoc dependency declarations in the file."
+            },
+            "environment_dependency_information": {
+                "score": 1,
+                "explanation": "Environment and Python version handling is delegated to external config (paths, YAML), indicating reproducibility considerations."
+            },
+            "key_parameters_explained": {
+                "score": 1,
+                "explanation": "The code includes docstrings that describe parameters for functions, aiding parameter explanations."
+            }
+        },
+        "file_path": "/home/mutaician/AIEngineerLearning/ready-tensor-course/temp/rt-repo-assessment/data/inputs/rt-repo-assessment/src/generators.py"
+    },
+    {
+        "scores": {
+            "functions_and_classes": {
+                "score": 1,
+                "explanation": "Code is organized into a single function (generate_markdown_report) rather than a monolithic script."
+            },
+            "function_length": {
+                "score": 0,
+                "explanation": "The function appears to exceed the 100-line guideline (roughly 110+ lines), violating the length constraint."
+            },
+            "code_duplication": {
+                "score": 1,
+                "explanation": "No evident duplicated blocks; the structure uses distinct steps for category stats, filtering, and Markdown generation."
+            },
+            "centralized_config": {
+                "score": 0,
+                "explanation": "No dedicated configuration files (e.g., config.py/json) are present in this snippet."
+            },
+            "no_hardcoded_constants": {
+                "score": 0,
+                "explanation": "Several hard-coded literals are used (e.g., header strings and emoji/status symbols); consider extracting to constants or config."
+            },
+            "env_variables": {
+                "score": 0,
+                "explanation": "No environment variable usage detected (no os.getenv, load_dotenv, etc.)."
+            },
+            "logging_basic": {
+                "score": 1,
+                "explanation": "Uses a logger (get_logger and logger.info) for runtime messages."
+            },
+            "logging_advanced": {
+                "score": 0,
+                "explanation": "No explicit logging configuration (levels, formats, handlers) provided."
+            },
+            "error_handling_basic": {
+                "score": 0,
+                "explanation": "No try/except blocks; potential runtime errors from missing keys or division by zero are not handled."
+            },
+            "error_handling_advanced": {
+                "score": 0,
+                "explanation": "No custom exception classes defined."
+            },
+            "testing_comprehensive": {
+                "score": 0,
+                "explanation": "No test coverage metrics or tests present in this file."
+            },
+            "testing_framework": {
+                "score": 0,
+                "explanation": "No testing framework usage detected in this file."
+            },
+            "uses_docstrings": {
+                "score": 1,
+                "explanation": "The function includes a docstring describing its purpose and arguments."
+            },
+            "complete_docstrings": {
+                "score": 0,
+                "explanation": "Docstring exists but lacks a Returns section and parameter-level return descriptions."
+            },
+            "type_hints": {
+                "score": 1,
+                "explanation": "Function signature uses type hints for parameters (Dict[str, Any], str, etc.)."
+            },
+            "code_style_tools": {
+                "score": 0,
+                "explanation": "No style-check configuration files (e.g., flake8/black configs) detected."
+            },
+            "code_style_consistency": {
+                "score": 1,
+                "explanation": "Indentation and formatting are consistently applied throughout the code."
+            },
+            "class_size": {
+                "score": 1,
+                "explanation": "No classes defined; satisfies class-size criterion."
+            },
+            "seed_setting": {
+                "score": 1,
+                "explanation": "No nondeterministic behavior detected; code is deterministic (no randomness)."
+            },
+            "data_quality_checks": {
+                "score": 0,
+                "explanation": "No input data validation logic present for the assessment data."
+            },
+            "model_organization": {
+                "score": 0,
+                "explanation": "No ML models or dedicated ML modules/classes in this file."
+            },
+            "package_structure": {
+                "score": 0,
+                "explanation": "No package structure (no __init__.py) visible in this snippet."
+            },
+            "pinned_dependencies": {
+                "score": 0,
+                "explanation": "Dependency pinning not visible in this file."
+            },
+            "dependency_groups": {
+                "score": 0,
+                "explanation": "No dependency groups (e.g., requirements-dev.txt) visible."
+            },
+            "environment_dependency_information": {
+                "score": 0,
+                "explanation": "No environment/dependency specifications (Python version, env management) present."
+            },
+            "key_parameters_explained": {
+                "score": 0,
+                "explanation": "Parameter explanations are not provided beyond the general docstring."
+            }
+        },
+        "file_path": "/home/mutaician/AIEngineerLearning/ready-tensor-course/temp/rt-repo-assessment/data/inputs/rt-repo-assessment/src/report.py"
+    },
+    {
+        "scores": {
+            "functions_and_classes": {
+                "score": 1,
+                "explanation": "Code defines a function get_logger; overall structure uses functions rather than a monolithic script."
+            },
+            "function_length": {
+                "score": 1,
+                "explanation": "get_logger is a relatively short function (well under 100 lines)."
+            },
+            "code_duplication": {
+                "score": 1,
+                "explanation": "No duplicate or repeated code found; single function."
+            },
+            "centralized_config": {
+                "score": 0,
+                "explanation": "No dedicated config files present."
+            },
+            "no_hardcoded_constants": {
+                "score": 1,
+                "explanation": "No hardcoded sensitive constants; only standard formatting string used."
+            },
+            "env_variables": {
+                "score": 0,
+                "explanation": "No environment variable usage or loads."
+            },
+            "logging_basic": {
+                "score": 1,
+                "explanation": "Uses Python's logging module (import logging and getLogger)."
+            },
+            "logging_advanced": {
+                "score": 1,
+                "explanation": "Configures formatter, stream handler and log level for the logger."
+            },
+            "error_handling_basic": {
+                "score": 1,
+                "explanation": "Contains no exception-raising paths; deterministic behavior."
+            },
+            "error_handling_advanced": {
+                "score": 0,
+                "explanation": "No custom exception classes defined."
+            },
+            "testing_comprehensive": {
+                "score": 0,
+                "explanation": "No test coverage metrics present."
+            },
+            "testing_framework": {
+                "score": 0,
+                "explanation": "No test framework usage detected."
+            },
+            "uses_docstrings": {
+                "score": 1,
+                "explanation": "Function has a docstring; module has docstring in function."
+            },
+            "complete_docstrings": {
+                "score": 1,
+                "explanation": "Docstring includes parameters and return value."
+            },
+            "type_hints": {
+                "score": 1,
+                "explanation": "Function signature uses a type hint for task_name and return type."
+            },
+            "code_style_tools": {
+                "score": 0,
+                "explanation": "No style checker config files present."
+            },
+            "code_style_consistency": {
+                "score": 1,
+                "explanation": "Code is consistently indented and formatted."
+            },
+            "class_size": {
+                "score": 1,
+                "explanation": "No classes; criterion satisfied."
+            },
+            "seed_setting": {
+                "score": 1,
+                "explanation": "No randomization; deterministic behavior; seed not required."
+            },
+            "data_quality_checks": {
+                "score": 0,
+                "explanation": "No input validation logic present."
+            },
+            "model_organization": {
+                "score": 0,
+                "explanation": "No ML models or organization."
+            },
+            "package_structure": {
+                "score": 0,
+                "explanation": "No package structure with __init__.py files."
+            },
+            "pinned_dependencies": {
+                "score": 0,
+                "explanation": "No pinned dependencies file present."
+            },
+            "dependency_groups": {
+                "score": 0,
+                "explanation": "No dependency grouping present."
+            },
+            "environment_dependency_information": {
+                "score": 0,
+                "explanation": "No explicit environment/dependency information."
+            },
+            "key_parameters_explained": {
+                "score": 0,
+                "explanation": "No documentation for key parameters beyond function docstring."
+            }
+        },
+        "file_path": "/home/mutaician/AIEngineerLearning/ready-tensor-course/temp/rt-repo-assessment/data/inputs/rt-repo-assessment/src/logger.py"
+    },
+    {
+        "scores": {
+            "functions_and_classes": {
+                "score": 1,
+                "explanation": "File defines a function and a class, not a monolithic script."
+            },
+            "function_length": {
+                "score": 1,
+                "explanation": "get_content_based_scoring_model is under typical length (likely < 100 lines)."
+            },
+            "code_duplication": {
+                "score": 1,
+                "explanation": "No evident code duplication; structure is modularized via functions/classes."
+            },
+            "centralized_config": {
+                "score": 0,
+                "explanation": "No dedicated configuration files (e.g., config.py, config.json) present in this file."
+            },
+            "no_hardcoded_constants": {
+                "score": 1,
+                "explanation": "No hardcoded constants such as API keys or secrets; string literals are descriptive Field descriptions."
+            },
+            "env_variables": {
+                "score": 0,
+                "explanation": "No environment variable usage (os.getenv, load_dotenv, etc.) detected."
+            },
+            "logging_basic": {
+                "score": 0,
+                "explanation": "No logging usage detected."
+            },
+            "logging_advanced": {
+                "score": 0,
+                "explanation": "No logging configuration present."
+            },
+            "error_handling_basic": {
+                "score": 0,
+                "explanation": "No try/except blocks detected; code may raise on import errors."
+            },
+            "error_handling_advanced": {
+                "score": 0,
+                "explanation": "No custom exception classes defined."
+            },
+            "testing_comprehensive": {
+                "score": 0,
+                "explanation": "No test coverage metrics or test files present."
+            },
+            "testing_framework": {
+                "score": 0,
+                "explanation": "No testing framework usage detected."
+            },
+            "uses_docstrings": {
+                "score": 1,
+                "explanation": "Class and function contain docstrings."
+            },
+            "complete_docstrings": {
+                "score": 1,
+                "explanation": "Docstrings include parameter/return details for function and class description."
+            },
+            "type_hints": {
+                "score": 1,
+                "explanation": "Function signature includes a type hint (input_file_extension: str) and return type annotation."
+            },
+            "code_style_tools": {
+                "score": 0,
+                "explanation": "No style-checker configuration files present."
+            },
+            "code_style_consistency": {
+                "score": 1,
+                "explanation": "Code appears well-formatted with consistent indentation and style."
+            },
+            "class_size": {
+                "score": 1,
+                "explanation": "Class CriterionScoring has no methods; small/concise class structure."
+            },
+            "seed_setting": {
+                "score": 1,
+                "explanation": "Code is deterministic (no randomness used), so seed setting is not required."
+            },
+            "data_quality_checks": {
+                "score": 0,
+                "explanation": "No input data validation logic beyond parameter typing."
+            },
+            "model_organization": {
+                "score": 0,
+                "explanation": "No ML model components; uses a small Pydantic model for scoring structure."
+            },
+            "package_structure": {
+                "score": 0,
+                "explanation": "Single-file snippet; no package init structure shown."
+            },
+            "pinned_dependencies": {
+                "score": 0,
+                "explanation": "No dependency pinning information present in this file."
+            },
+            "dependency_groups": {
+                "score": 0,
+                "explanation": "No dependency grouping information present."
+            },
+            "environment_dependency_information": {
+                "score": 0,
+                "explanation": "No explicit environment/dependency management information provided."
+            },
+            "key_parameters_explained": {
+                "score": 1,
+                "explanation": "Key parameter input_file_extension is described in the function docstring."
+            }
+        },
+        "file_path": "/home/mutaician/AIEngineerLearning/ready-tensor-course/temp/rt-repo-assessment/data/inputs/rt-repo-assessment/src/output_parsers.py"
+    },
+    {
+        "scores": {
+            "functions_and_classes": {
+                "score": 1,
+                "explanation": "No functions or classes found in the file; criterion satisfied."
+            },
+            "function_length": {
+                "score": 1,
+                "explanation": "No functions present; function length criterion satisfied."
+            },
+            "code_duplication": {
+                "score": 1,
+                "explanation": "No code duplication detected; file consists of constant definitions only."
+            },
+            "centralized_config": {
+                "score": 1,
+                "explanation": "References to centralized config files exist (config.json in the config directory); criterion satisfied."
+            },
+            "no_hardcoded_constants": {
+                "score": 1,
+                "explanation": "Hardcoded values are configuration paths and not sensitive; treated as acceptable per guidance."
+            },
+            "env_variables": {
+                "score": 0,
+                "explanation": "No environment variable usage (e.g., os.getenv, load_dotenv) detected in this file."
+            },
+            "logging_basic": {
+                "score": 0,
+                "explanation": "No logging usage detected in the file."
+            },
+            "logging_advanced": {
+                "score": 0,
+                "explanation": "No logging configuration present."
+            },
+            "error_handling_basic": {
+                "score": 1,
+                "explanation": "File contains only constants; deterministic and does not raise errors; criterion satisfied."
+            },
+            "error_handling_advanced": {
+                "score": 0,
+                "explanation": "No custom exception classes defined."
+            },
+            "testing_comprehensive": {
+                "score": 0,
+                "explanation": "No tests present."
+            },
+            "testing_framework": {
+                "score": 0,
+                "explanation": "No testing framework usage detected."
+            },
+            "uses_docstrings": {
+                "score": 1,
+                "explanation": "No functions/classes; docstring presence criterion considered satisfied by absence."
+            },
+            "complete_docstrings": {
+                "score": 1,
+                "explanation": "No functions/classes; docstring completeness criterion considered satisfied."
+            },
+            "type_hints": {
+                "score": 1,
+                "explanation": "No functions/classes; type hints not applicable."
+            },
+            "code_style_tools": {
+                "score": 0,
+                "explanation": "No style-checker configuration files observed."
+            },
+            "code_style_consistency": {
+                "score": 1,
+                "explanation": "Indentation and formatting appear consistent throughout the file."
+            },
+            "class_size": {
+                "score": 1,
+                "explanation": "No classes present; class size criterion satisfied."
+            },
+            "seed_setting": {
+                "score": 1,
+                "explanation": "Code is deterministic; no random seeds or stochastic behavior detected."
+            },
+            "data_quality_checks": {
+                "score": 0,
+                "explanation": "No data validation logic present."
+            },
+            "model_organization": {
+                "score": 0,
+                "explanation": "No ML model organization; not applicable."
+            },
+            "package_structure": {
+                "score": 0,
+                "explanation": "No package with __init__ structure is shown."
+            },
+            "pinned_dependencies": {
+                "score": 0,
+                "explanation": "No dependency pinning information available in this snippet."
+            },
+            "dependency_groups": {
+                "score": 0,
+                "explanation": "No dependency grouping information available in this snippet."
+            },
+            "environment_dependency_information": {
+                "score": 1,
+                "explanation": "The file indicates environment and config structure (paths to config and scoring dirs) conducive to reproducible environments."
+            },
+            "key_parameters_explained": {
+                "score": 0,
+                "explanation": "No parameter parameters documented in this snippet."
+            }
+        },
+        "file_path": "/home/mutaician/AIEngineerLearning/ready-tensor-course/temp/rt-repo-assessment/data/inputs/rt-repo-assessment/src/config/paths.py"
+    },
+    {
+        "scores": {
+            "centralized_config": {
+                "score": 1,
+                "explanation": "File content resembles a dedicated configuration object (config-like JSON)."
+            },
+            "env_variables": {
+                "score": 0,
+                "explanation": "No environment variable usage or loading is present."
+            },
+            "testing_comprehensive": {
+                "score": 0,
+                "explanation": "No test coverage metrics or tests found."
+            },
+            "code_style_tools": {
+                "score": 0,
+                "explanation": "No style-checker config files detected (e.g., .flake8, mypy.ini)."
+            },
+            "code_style_consistency": {
+                "score": 1,
+                "explanation": "JSON is consistently indented and well-formatted."
+            },
+            "package_structure": {
+                "score": 1,
+                "explanation": "File contains no Python package; criterion satisfied for absence of package structure."
+            },
+            "pinned_dependencies": {
+                "score": 0,
+                "explanation": "No dependencies or version pinning information present."
+            },
+            "environment_dependency_information": {
+                "score": 0,
+                "explanation": "No Python version, dependency manager, or environment reproducibility guidance provided."
+            },
+            "key_parameters_explained": {
+                "score": 0,
+                "explanation": "No parameter documentation provided in this file."
+            }
+        },
+        "file_path": "/home/mutaician/AIEngineerLearning/ready-tensor-course/temp/rt-repo-assessment/data/inputs/rt-repo-assessment/src/config/config.json"
+    },
+    {
+        "scores": {
+            "centralized_config": {
+                "score": 1,
+                "explanation": "This file itself is a configuration fragment (tracked_extensions, text_extensions, ignored_names, script_extensions). It demonstrates dedicated configuration usage and is structured as a config file."
+            },
+            "env_variables": {
+                "score": 0,
+                "explanation": "No references to environment variables (e.g., os.getenv, load_dotenv) are present in this file."
+            },
+            "testing_comprehensive": {
+                "score": 0,
+                "explanation": "There are no test files or test code present in this file."
+            },
+            "code_style_tools": {
+                "score": 0,
+                "explanation": "No style-checker or linter configuration files are detected (e.g., .flake8, mypy.ini, setup.cfg)."
+            },
+            "code_style_consistency": {
+                "score": 1,
+                "explanation": "The content is consistently formatted YAML-like structure with uniform indentation and ordering."
+            },
+            "package_structure": {
+                "score": 0,
+                "explanation": "This file is not a Python package and contains no init.py; therefore package structure criteria are not satisfied."
+            },
+            "pinned_dependencies": {
+                "score": 0,
+                "explanation": "There are no explicitly pinned dependencies listed (no requirements.txt, pyproject with pin versions, etc.)."
+            },
+            "key_parameters_explained": {
+                "score": 0,
+                "explanation": "There is no documentation of modeling parameters or other key parameters in this configuration file."
+            }
+        },
+        "file_path": "/home/mutaician/AIEngineerLearning/ready-tensor-course/temp/rt-repo-assessment/data/inputs/rt-repo-assessment/src/config/tracked_files.yaml"
+    },
+    {
+        "scores": {
+            "centralized_config": {
+                "score": 0,
+                "explanation": "Not applicable to this file (no configuration files present)."
+            },
+            "env_variables": {
+                "score": 0,
+                "explanation": "No usage or references to environment variables detected in the file."
+            },
+            "testing_comprehensive": {
+                "score": 0,
+                "explanation": "No test coverage information or tests present in the file."
+            },
+            "code_style_tools": {
+                "score": 0,
+                "explanation": "No code style tool configuration detected in the file."
+            },
+            "code_style_consistency": {
+                "score": 0,
+                "explanation": "No code formatting evidence to assess consistency in this text-only file."
+            },
+            "package_structure": {
+                "score": 0,
+                "explanation": "No package structure or __init__ usage present."
+            },
+            "pinned_dependencies": {
+                "score": 0,
+                "explanation": "No dependency pinning information present."
+            },
+            "key_parameters_explained": {
+                "score": 0,
+                "explanation": "No modeling parameters documented in this file."
+            }
+        },
+        "file_path": "/home/mutaician/AIEngineerLearning/ready-tensor-course/temp/rt-repo-assessment/data/inputs/rt-repo-assessment/src/config/prompts.yaml"
+    },
+    {
+        "scores": {
+            "functions_and_classes": {
+                "score": 1,
+                "explanation": "The file defines multiple functions (readme_presence, script_length, secret_management, repository_size) and uses a Protocol; no monolithic script. Functions are well-scoped."
+            },
+            "function_length": {
+                "score": 1,
+                "explanation": "All functions appear well under the assumed practical limit (roughly <100 lines each). No function exceeds the typical threshold."
+            },
+            "code_duplication": {
+                "score": 1,
+                "explanation": "No significant duplicate code blocks or repeated logic beyond common patterns (docstrings and structure)."
+            },
+            "centralized_config": {
+                "score": 1,
+                "explanation": "Imports a config module (from config import paths), indicating centralized configuration handling."
+            },
+            "no_hardcoded_constants": {
+                "score": 1,
+                "explanation": "No hardcoded constants that would represent secret keys or fixed configuration values are evident in core logic. Strings are used for messages."
+            },
+            "env_variables": {
+                "score": 0,
+                "explanation": "No usage of environment variables (e.g., os.getenv, load_dotenv) is present in the code."
+            },
+            "logging_basic": {
+                "score": 0,
+                "explanation": "No logging usage is present in the file."
+            },
+            "logging_advanced": {
+                "score": 0,
+                "explanation": "No logging configuration or advanced logging setup is present."
+            },
+            "error_handling_basic": {
+                "score": 0,
+                "explanation": "No try/except blocks are present; the code relies on direct checks and dictionary access which may raise KeyError at runtime."
+            },
+            "error_handling_advanced": {
+                "score": 0,
+                "explanation": "No custom exception classes are defined in this file."
+            },
+            "testing_comprehensive": {
+                "score": 0,
+                "explanation": "No test files or test coverage information are shown in this snippet."
+            },
+            "testing_framework": {
+                "score": 0,
+                "explanation": "No testing framework usage (e.g., pytest/unittest) is present in this file."
+            },
+            "uses_docstrings": {
+                "score": 1,
+                "explanation": "Most functions and the wrapper have docstrings explaining purpose and behavior."
+            },
+            "complete_docstrings": {
+                "score": 1,
+                "explanation": "Docstrings include parameters and return sections for functions; wrapper and module-level docstrings are present as well."
+            },
+            "type_hints": {
+                "score": 1,
+                "explanation": "Type hints are used throughout function signatures (Dict[str, Any], etc.)."
+            },
+            "code_style_tools": {
+                "score": 0,
+                "explanation": "No style checker configuration files (e.g., .flake8, mypy.ini) are shown in this snippet."
+            },
+            "code_style_consistency": {
+                "score": 1,
+                "explanation": "Indentation and formatting are consistent throughout the file."
+            },
+            "class_size": {
+                "score": 1,
+                "explanation": "There are no classes defined; the criterion is satisfied when no classes are present."
+            },
+            "seed_setting": {
+                "score": 1,
+                "explanation": "The code is deterministic (no random usage); seed setting not required and thus satisfied."
+            },
+            "data_quality_checks": {
+                "score": 0,
+                "explanation": "Limited input data validation logic is present; functions access dict keys directly without robust validation."
+            },
+            "model_organization": {
+                "score": 0,
+                "explanation": "No ML models or model organization into modules/classes is present."
+            },
+            "package_structure": {
+                "score": 0,
+                "explanation": "No explicit package structure (e.g., __init__.py presence) is demonstrated in this snippet."
+            },
+            "pinned_dependencies": {
+                "score": 0,
+                "explanation": "No explicit dependency pinning information (e.g., pinned versions) is shown in this file."
+            },
+            "dependency_groups": {
+                "score": 0,
+                "explanation": "No dependencies grouped via requirements files or extras are shown."
+            },
+            "environment_dependency_information": {
+                "score": 0,
+                "explanation": "No explicit environment/dependency management information (Python version, docker, etc.) is provided here."
+            },
+            "key_parameters_explained": {
+                "score": 0,
+                "explanation": "No documentation of key modeling parameters or considerations is provided in this code snippet."
+            }
+        },
+        "file_path": "/home/mutaician/AIEngineerLearning/ready-tensor-course/temp/rt-repo-assessment/data/inputs/rt-repo-assessment/src/config/logic_based_scoring.py"
+    },
+    {
+        "scores": {
+            "centralized_config": {
+                "score": 0,
+                "explanation": "The provided file appears to be a policy/configuration snippet describing licensing and rights, not a dedicated centralized config file (e.g., config.py, config.json, .env) in the repository root."
+            },
+            "env_variables": {
+                "score": 0,
+                "explanation": "No references to environment variables (e.g., os.getenv, load_dotenv) are present in the file."
+            },
+            "testing_comprehensive": {
+                "score": 0,
+                "explanation": "No test code, test files, or test coverage artifacts are present in this file."
+            },
+            "code_style_tools": {
+                "score": 0,
+                "explanation": "No style-checker configuration files (e.g., .flake8, .eslint) are present in this file."
+            },
+            "code_style_consistency": {
+                "score": 1,
+                "explanation": "The content shows consistent indentation and formatting throughout the snippet."
+            },
+            "package_structure": {
+                "score": 0,
+                "explanation": "No Python package structure or __init__.py declarations are evidenced in this file."
+            },
+            "pinned_dependencies": {
+                "score": 0,
+                "explanation": "There are no dependency specifications or pinned versions in this file."
+            },
+            "key_parameters_explained": {
+                "score": 0,
+                "explanation": "The file does not document key modeling parameters or considerations; it outlines license and rights-related criteria instead."
+            }
+        },
+        "file_path": "/home/mutaician/AIEngineerLearning/ready-tensor-course/temp/rt-repo-assessment/data/inputs/rt-repo-assessment/src/config/scoring/license_criteria.yaml"
+    },
+    {
+        "scores": {
+            "centralized_config": {
+                "score": 0,
+                "explanation": "The provided document is a repository architecture description and does not specify dedicated configuration files."
+            },
+            "env_variables": {
+                "score": 0,
+                "explanation": "No environment variable usage or references are present in the content."
+            },
+            "testing_comprehensive": {
+                "score": 0,
+                "explanation": "No tests or testing artifacts are included in the file."
+            },
+            "code_style_tools": {
+                "score": 0,
+                "explanation": "No code style tool configuration or tooling is present in the document."
+            },
+            "code_style_consistency": {
+                "score": 0,
+                "explanation": "There are no code formatting rules or consistency indicators described."
+            },
+            "package_structure": {
+                "score": 0,
+                "explanation": "The file discusses architectural categories but does not exhibit a Python package structure or module layout."
+            },
+            "pinned_dependencies": {
+                "score": 0,
+                "explanation": "No dependencies or pinned versions are mentioned."
+            },
+            "key_parameters_explained": {
+                "score": 0,
+                "explanation": "No key modeling parameters or considerations are documented in the file."
+            }
+        },
+        "file_path": "/home/mutaician/AIEngineerLearning/ready-tensor-course/temp/rt-repo-assessment/data/inputs/rt-repo-assessment/src/config/scoring/structure_criteria.yaml"
+    },
+    {
+        "scores": {
+            "centralized_config": {
+                "score": 0,
+                "explanation": "No dedicated configuration files (config.py, config.json, .env, etc.) are present in the provided file content."
+            },
+            "env_variables": {
+                "score": 0,
+                "explanation": "No environment-variable usage detected in the provided file content."
+            },
+            "testing_comprehensive": {
+                "score": 0,
+                "explanation": "No test coverage metrics (e.g., .coverage) found in the provided file content."
+            },
+            "code_style_tools": {
+                "score": 0,
+                "explanation": "No style-checker configuration files detected in the provided file content."
+            },
+            "code_style_consistency": {
+                "score": 1,
+                "explanation": "The file content is consistently indented and appears to be a well-formatted YAML-like structure."
+            },
+            "package_structure": {
+                "score": 0,
+                "explanation": "No Python package structure (e.g., __init__.py files) detectable in the provided file content."
+            },
+            "pinned_dependencies": {
+                "score": 0,
+                "explanation": "No pinned dependencies information found in the provided file content."
+            },
+            "key_parameters_explained": {
+                "score": 0,
+                "explanation": "No documentation of key modeling parameters or considerations found in the provided file content."
+            }
+        },
+        "file_path": "/home/mutaician/AIEngineerLearning/ready-tensor-course/temp/rt-repo-assessment/data/inputs/rt-repo-assessment/src/config/scoring/code_quality_criteria.yaml"
+    },
+    {
+        "scores": {
+            "centralized_config": {
+                "score": 0,
+                "explanation": "No dedicated configuration files present in this content."
+            },
+            "env_variables": {
+                "score": 0,
+                "explanation": "No references to environment variables (e.g., os.getenv, load_dotenv) detected in the file."
+            },
+            "testing_comprehensive": {
+                "score": 0,
+                "explanation": "No test code or testing framework usage present."
+            },
+            "code_style_tools": {
+                "score": 0,
+                "explanation": "No code style tool configuration detected (e.g., flake8, black) in this content."
+            },
+            "code_style_consistency": {
+                "score": 0,
+                "explanation": "File is documentation-only; no code style pattern to evaluate."
+            },
+            "package_structure": {
+                "score": 0,
+                "explanation": "No package structure present in this content."
+            },
+            "pinned_dependencies": {
+                "score": 0,
+                "explanation": "No dependency specification present."
+            },
+            "key_parameters_explained": {
+                "score": 0,
+                "explanation": "No key modeling parameters documented in code-like context."
+            }
+        },
+        "file_path": "/home/mutaician/AIEngineerLearning/ready-tensor-course/temp/rt-repo-assessment/data/inputs/rt-repo-assessment/src/config/scoring/documentation_criteria.yaml"
+    },
+    {
+        "scores": {
+            "centralized_config": {
+                "score": 1,
+                "explanation": "File is not code-based; evaluation focuses on configuration description presence, not code structure."
+            },
+            "env_variables": {
+                "score": 0,
+                "explanation": "No references to environment variables detected in the file content."
+            },
+            "testing_comprehensive": {
+                "score": 0,
+                "explanation": "No testing code or test files present in the given content."
+            },
+            "code_style_tools": {
+                "score": 0,
+                "explanation": "No style-check configuration files observed (e.g., flake8, mypy) in the provided content."
+            },
+            "code_style_consistency": {
+                "score": 1,
+                "explanation": "Content is a structured description with consistent formatting; no code indentation/formatting issues detected."
+            },
+            "package_structure": {
+                "score": 0,
+                "explanation": "No Python package structure observed (no __init__.py, etc.) in the provided content."
+            },
+            "pinned_dependencies": {
+                "score": 0,
+                "explanation": "No explicit dependency pins or versions present in the given content."
+            },
+            "key_parameters_explained": {
+                "score": 0,
+                "explanation": "No modeling parameters or key parameters documented in code-like form."
+            }
+        },
+        "file_path": "/home/mutaician/AIEngineerLearning/ready-tensor-course/temp/rt-repo-assessment/data/inputs/rt-repo-assessment/src/config/scoring/dependancies_criteria.yaml"
+    },
+    {
+        "scores": {
+            "env_variables": {
+                "score": 0,
+                "explanation": "No environment variable usage detected in the file."
+            },
+            "testing_comprehensive": {
+                "score": 0,
+                "explanation": "No testing code present in this file."
+            },
+            "code_style_tools": {
+                "score": 0,
+                "explanation": "No style/tool configuration detected in this file."
+            },
+            "code_style_consistency": {
+                "score": 0,
+                "explanation": "No code formatting to evaluate in a non-code document."
+            },
+            "package_structure": {
+                "score": 0,
+                "explanation": "No package structure present in this textual document."
+            },
+            "pinned_dependencies": {
+                "score": 0,
+                "explanation": "No dependency pinning information in this file."
+            },
+            "copyright_notice_mentioned": {
+                "score": 0,
+                "explanation": "No explicit copyright notice detected beyond the overall project description."
+            },
+            "environment_dependency_information": {
+                "score": 0,
+                "explanation": "No environment/dependency management details present in this file."
+            },
+            "key_parameters_explained": {
+                "score": 0,
+                "explanation": "No key modeling parameters documented in this file."
+            }
+        },
+        "file_path": "/home/mutaician/AIEngineerLearning/ready-tensor-course/temp/rt-repo-assessment/data/inputs/rt-repo-assessment/README.md"
+    },
+    {
+        "scores": {
+            "env_variables": {
+                "score": 0,
+                "explanation": "No environment variable usage detected in this manifest."
+            },
+            "testing_comprehensive": {
+                "score": 0,
+                "explanation": "No test coverage metrics or test files present in this manifest."
+            },
+            "code_style_tools": {
+                "score": 0,
+                "explanation": "No style checker configuration files detected."
+            },
+            "code_style_consistency": {
+                "score": 0,
+                "explanation": "No code formatting indicators present in the manifest."
+            },
+            "package_structure": {
+                "score": 0,
+                "explanation": "No Python package structure (__init__.py) detected in this file."
+            },
+            "pinned_dependencies": {
+                "score": 0,
+                "explanation": "Dependencies use minimum version specifiers (>=); not pinned to exact versions."
+            },
+            "dependency_groups": {
+                "score": 1,
+                "explanation": "Dev dependency group defined; dependencies are organized under [dependency-groups]."
+            },
+            "environment_dependency_information": {
+                "score": 1,
+                "explanation": "Requires-python range specified and dependencies are listed, indicating environment reproducibility information."
+            },
+            "key_parameters_explained": {
+                "score": 0,
+                "explanation": "No explicit documentation of key modeling parameters present in this manifest."
+            }
+        },
+        "file_path": "/home/mutaician/AIEngineerLearning/ready-tensor-course/temp/rt-repo-assessment/data/inputs/rt-repo-assessment/pyproject.toml"
+    },
+    {
+        "scores": {
+            "env_variables": {
+                "score": 0,
+                "explanation": "No environment variable usage detected in this file (it's a package manifest with static data)."
+            },
+            "testing_comprehensive": {
+                "score": 0,
+                "explanation": "No test files or test framework usage present in the provided content."
+            },
+            "code_style_tools": {
+                "score": 0,
+                "explanation": "No style checking tooling configuration is part of this file; it is a dependency manifest."
+            },
+            "code_style_consistency": {
+                "score": 0,
+                "explanation": "Not applicable to a manifest file; no code formatting to assess."
+            },
+            "package_structure": {
+                "score": 1,
+                "explanation": "The file shows a properly structured package manifest with multiple package entries."
+            },
+            "pinned_dependencies": {
+                "score": 1,
+                "explanation": "Dependencies are version-pinned in this manifest (explicit versions shown for many packages)."
+            },
+            "dependency_groups": {
+                "score": 0,
+                "explanation": "No separate core/dev/test group files or extras are evident in the snippet; groups are not clearly defined here."
+            },
+            "environment_dependency_information": {
+                "score": 1,
+                "explanation": "The manifest lists python versions and dependencies, providing environment reproducibility context."
+            },
+            "key_parameters_explained": {
+                "score": 0,
+                "explanation": "No explicit modeling key parameters are documented here since this is a dependency lock-like file."
+            }
+        },
+        "file_path": "/home/mutaician/AIEngineerLearning/ready-tensor-course/temp/rt-repo-assessment/data/inputs/rt-repo-assessment/uv.lock"
+    }
+]

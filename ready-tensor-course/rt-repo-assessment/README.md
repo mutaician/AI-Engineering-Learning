@@ -1,3 +1,5 @@
+# Messed up with my local git repo setup test but all credits of this directory/folder goes to https://github.com/readytensor/rt-repo-assessment 
+
 # GitHub Repository Assessment
 
 ## Overview

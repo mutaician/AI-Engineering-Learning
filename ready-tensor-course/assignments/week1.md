@@ -49,4 +49,35 @@ Your Answer Here: non-agentic solution as its based on data and investment goals
 ## Part 3: Repository Analysis
 Review the codebase at https://github.com/readytensor/rt-repo-assessment. Based on the definition of agentic AI systems we've covered in the lecture, would you classify this solution as agentic? Why or why not? Support your analysis with specific examples from the codebase that either align with or deviate from the key characteristics of AI agents we've discussed.
 
+Answer: ~~Got ratelimited 🥲😅: openai.RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for gpt-5-nano in organization org-5UQGs3k1JQD71z6x5RzWYvaq on tokens per min (TPM): Limit 200000, Used 198168, Requested 5110. Please try again in 983ms. Visit https://platform.openai.com/account/rate-limits to learn more.', 'type': 'tokens', 'param': None, 'code': 'rate_limit_exceeded'}}~~ lowered number of workers in config.json
+It aligns with key characteristics of AI Agents, as the repo to be accessed is unique, the agent has access to tools to know more about the repo and get a specific information about the repo. with the content of the repo the agent understands what to do with it considering the final goal of providing final report of the repo. Liked the parallel processing
 
+## Part 4: Future of Work Analysis
+Based on what you have understood about agentic AI in Week 1, do you think the following job titles will be eliminated in the next 10 years due to agentic AI? Explain your reasoning for each:
+● Software Engineer
+● Data Analyst
+● Data Scientist
+● ML Engineer
+● AI Engineer
+● Data Engineer
+● ML-Ops Engineer
+Your Answer Here: I don't think the roles will be eliminated, short why: not every problem needs an agent
+
+
+## Part 5: Choosing the Right Architecture for an Automated
+Peer Review System
+Background:
+Imagine you are tasked with building a system to automatically review academic papers for a journal submission platform. The system should read the paper identify strengths and weaknesses, and generate a structured review.
+Exercise:
+Below are two different architectural designs for this system:
+● One is a non-agentic workflow,
+● One is a multi-agent system,
+Your task:
+● Carefully study the two architectures.
+● Based on what you learned about Workflows vs. Agents, choose the architecture you think
+will perform best for this task.
+● There is no right or wrong answer - we want you to think strategically about tradeoffs like
+flexibility, transparency, cost, complexity, and reliability.
+● You can also propose another architecture that you think would be best for this case study.
+In 2–8 sentences, explain why you made your choice. 
+Your Answer Here: Agentic architecture (multiagent system), to make the sytem more flexible, we can dedicate different models to a specific task powerful one for planning, smaller one for verifying with external knowledge, we can add human in the loop to the agentic system .... with it also we can know where the issue is in debugging agent process, like which agent needs more fixes and features. 

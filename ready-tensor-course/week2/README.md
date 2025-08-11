@@ -32,7 +32,16 @@
 - Generate sub-questions answer them one by one then synthesize the final answer
 - good for: problems than needs to be broken down, explore multiple angles before decision
 
+Examples: https://app.readytensor.ai/publications/3jI5t1hwF8wM
+
 ##### Training data connection with the advanced reasoning
 - Chain of Thought: Math textbooks, tutorial explanations, step-by-step guides where humans write "First... then... therefore..."
 - ReAct: Technical documentation, troubleshooting guides, research methodologies that follow "assess the situation → take action → evaluate results"
 - Self-Ask: Academic papers, investigative journalism, educational content that breaks complex topics into sub-questions
+
+## LLM Output Parsing
+
+1. Regular prompting with format hints
+- Explicit Format Instructions, Demonstrate with an Example, Be Precise and Predictable, Standardize Field Names and Types
+2. Model-Native Structured Output
+- 

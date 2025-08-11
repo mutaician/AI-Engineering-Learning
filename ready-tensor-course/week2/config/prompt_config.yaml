@@ -85,7 +85,7 @@ summarization_prompt_cfg6:
     - Favor short, clear sentences over long compound ones
   goal: |
     Help a curious non-expert decide whether this publication is worth reading in full.
-  reasoning_strategy: "CoT"
+  reasoning_strategy: "Self-Ask"
 
 linkedin_post_prompt_cfg:
   description: "Wk2, L1 - Demo: Creates an engaging LinkedIn post about a publication"

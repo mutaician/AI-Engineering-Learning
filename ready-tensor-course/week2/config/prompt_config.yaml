@@ -1,0 +1,116 @@
+summarization_prompt_cfg1:
+  description: "Wk2, L1 - Example1: Baseline prompt using only a plain instruction"
+  instruction: "Write a summary of an article or publication given to you."
+
+summarization_prompt_cfg2:
+  description: "Wk2, L1 - Example2: Adds output constraints to enforce length and format"
+  instruction: "Write a summary of an article or publication given to you."
+  output_constraints:
+    - Keep the summary to a single paragraph of approximately 80 to 100 words.
+    - Avoid bullet points or section headers.
+
+summarization_prompt_cfg3:
+  description: "Wk2, L1 - Example3: Introduces a role to align tone with a public audience"
+  instruction: "Write a summary of an article or publication given to you."
+  output_constraints:
+    - Keep the summary to a single paragraph of approximately 80 to 100 words.
+    - Avoid bullet points or section headers.
+  role: |
+    An AI communicator writing for a general public audience interested in technology 
+    and innovation
+
+summarization_prompt_cfg4:
+  description: "Wk2, L1 - Example4: Expands style and tone guidance to shape voice and clarity"
+  instruction: "Write a summary of an article or publication given to you."
+  output_constraints:
+    - Keep the summary to a single paragraph of approximately 80 to 100 words.
+    - Avoid bullet points or section headers.
+  role: |
+    An AI communicator writing for a general public audience interested in technology 
+    and innovation
+  style_or_tone:
+    - Use plain, everyday language
+    - Direct and confident
+    - Personal and human
+    - Avoid hype or promotional language
+    - Avoid deeply technical jargon
+    - No buzzwords like “transformative” or “game-changer”
+    - Avoid overly polished terms like “delves into,” “showcasing,” or leverages
+    - Avoid clichés like “in the realm of,” “ushering in,” or “a new era of”
+    - Don’t use em dashes (—) or semicolons
+    - Favor short, clear sentences over long compound ones
+
+summarization_prompt_cfg5:
+  description: "Wk2, L1 - Example5: Adds a clear communication goal to guide emphasis and purpose"
+  instruction: "Write a summary of an article or publication given to you."
+  output_constraints:
+    - Keep the summary to a single paragraph of approximately 80 to 100 words.
+    - Avoid bullet points or section headers.
+  role: |
+    An AI communicator writing for a general public audience interested in technology 
+    and innovation
+  style_or_tone:
+    - Use plain, everyday language
+    - Direct and confident
+    - Personal and human
+    - Avoid hype or promotional language
+    - Avoid deeply technical jargon
+    - No buzzwords like “transformative” or “game-changer”
+    - Avoid overly polished terms like “delves into,” “showcasing,” or "leverages"
+    - Avoid clichés like “in the realm of,” “ushering in,” or “a new era of”
+    - Don’t use em dashes (—) or semicolons
+    - Favor short, clear sentences over long compound ones
+  goal: |
+    Help a curious non-expert decide whether this publication is worth reading in full.
+
+summarization_prompt_cfg6:
+  description: "Wk2, L2: Adds CoT reasoning strategy to summarization"
+  instruction: "Write a summary of an article or publication given to you."
+  output_constraints:
+    - Keep the summary to a single paragraph of approximately 80 to 100 words.
+    - Avoid bullet points or section headers.
+  role: |
+    An AI communicator writing for a general public audience interested in technology 
+    and innovation
+  style_or_tone:
+    - Use plain, everyday language
+    - Direct and confident
+    - Personal and human
+    - Avoid hype or promotional language
+    - Avoid deeply technical jargon
+    - No buzzwords like “transformative” or “game-changer”
+    - Avoid overly polished terms like “delves into,” “showcasing,” or "leverages"
+    - Avoid clichés like “in the realm of,” “ushering in,” or “a new era of”
+    - Don’t use em dashes (—) or semicolons
+    - Favor short, clear sentences over long compound ones
+  goal: |
+    Help a curious non-expert decide whether this publication is worth reading in full.
+  reasoning_strategy: "CoT"
+
+linkedin_post_prompt_cfg:
+  description: "Wk2, L1 - Demo: Creates an engaging LinkedIn post about a publication"
+  instruction: "Write a LinkedIn post about an article or publication given to you."
+  output_constraints:
+    - Keep the post to 150-200 words maximum
+    - Include 5 to 8 relevant hashtags at the end
+    - Use line breaks for readability
+  role: |
+    An AI communicator writing for a general public audience interested in technology 
+    and innovation
+  style_or_tone:
+    - Use semi-casual tone appropriate for LinkedIn
+    - Start with a catchy opening line or header to grab attention
+    - Use plain, everyday language
+    - Direct and confident
+    - Personal and human
+    - Avoid hype or promotional language
+    - Avoid deeply technical jargon
+    - No buzzwords like "transformative" or "game-changer"
+    - Avoid overly polished terms like "delves into," "showcasing," or "leverages"
+    - Avoid clichés like "in the realm of," "ushering in," or "a new era of"
+    - Don't use em dashes (—) or semicolons
+    - Favor short, clear sentences over long compound ones
+    - Use emojis sparingly - no more than 3 if they add value
+    - Do NOT use markdown formatting (e.g. **bold**). Use plain text and unicode bold as needed.
+  goal: |
+    Generate high engagement and drive the audience to read the full publication.

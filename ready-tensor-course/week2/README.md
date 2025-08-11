@@ -44,4 +44,8 @@ Examples: https://app.readytensor.ai/publications/3jI5t1hwF8wM
 1. Regular prompting with format hints
 - Explicit Format Instructions, Demonstrate with an Example, Be Precise and Predictable, Standardize Field Names and Types
 2. Model-Native Structured Output
-- 
+
+## Function CHaining
+
+- Templates help build modular, reusable components that support more complex function chaining over direct prompting
+- function chaining connects multiple ai-powered operations in sequence, where output for one step becomes input for the next step

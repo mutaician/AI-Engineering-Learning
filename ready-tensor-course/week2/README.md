@@ -49,3 +49,27 @@ Examples: https://app.readytensor.ai/publications/3jI5t1hwF8wM
 
 - Templates help build modular, reusable components that support more complex function chaining over direct prompting
 - function chaining connects multiple ai-powered operations in sequence, where output for one step becomes input for the next step
+
+## Vector Databases
+- embedding -> array of numbers that represent piece of data in high dimensional space 
+- sample usecase -> retrieve relevant documents, recommend similar content, ground AI response in factual content
+
+## RAG
+### Part 1: Knowledge Building
+1. Chunking documents
+2. convert text to vectors
+3. store in vector database
+### Part2: Smart Retrieval and Reponse
+1. question embedding
+2. similarity search
+3. context assembly
+4. llm generation
+
+RAG pitfalls
+1. infrastructure and operational costs - vector db, embeddin initial content
+2. hallucination problem
+3. when chunking breaks knowledge - answer is split btn chunk in different places
+4. fresh data challenge - keeping knowledge base current
+
+##### RAG Across Industries
+Customer support systems retrieve information from product manuals and FAQs to provide accurate responses. Law firms search through legal documents and case precedents to assist with research. Healthcare systems access the latest research papers and treatment protocols for diagnosis support. Educational platforms provide personalized answers from textbooks and course materials. Organizations help employees find information across company documents and policies. Financial institutions analyze market reports and economic indicators for insights. Media companies suggest relevant content based on user interests and past interactions.

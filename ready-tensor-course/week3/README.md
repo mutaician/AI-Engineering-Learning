@@ -29,4 +29,5 @@ Design your system prompts as if the whole world will read them. If they’re cl
 2. Trim to recent
 3. Summarize history
 
- 
+## RAG
+HNSW - Hierarchical Navigable Small world

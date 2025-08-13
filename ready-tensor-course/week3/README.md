@@ -23,3 +23,10 @@ output format - how answers are structured
 Design your system prompts as if the whole world will read them. If they’re clear, ethical, and aligned with your values, you’re on the right track.
 
 
+## Memory management Stategies
+
+1. Stuffing everything in 
+2. Trim to recent
+3. Summarize history
+
+ 

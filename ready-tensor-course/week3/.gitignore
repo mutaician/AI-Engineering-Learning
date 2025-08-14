@@ -1,1 +1,10 @@
-research.db
+# Ignore ChromaDB artifacts
+outputs/research.db/
+outputs/research.db/**
+
+# Common Chroma files (defense-in-depth)
+outputs/**/chroma.sqlite3
+outputs/**/data_level0.bin
+outputs/**/header.bin
+outputs/**/length.bin
+outputs/**/link_lists.bin

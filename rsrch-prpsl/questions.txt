@@ -1,0 +1,15 @@
+What are the top 10 best-selling albums by total revenue?
+Which customers have spent the most money in the last year?
+What is the revenue breakdown by genre for the current quarter?
+Which artists generate the highest sales volume?
+How many new customers were acquired each month this year?
+What are the average invoice totals by country?
+Which tracks are the most popular in playlists?
+What is the sales performance of each employee?
+How has revenue trended over the past 12 months?
+Which genres have the highest average track prices?
+What are the top 5 cities by total customer spending?
+How many tracks have been sold in each media type?
+Which customers have not made a purchase in the last 6 months?
+What is the total revenue from invoices billed to each state?
+Which albums have the longest average track duration?

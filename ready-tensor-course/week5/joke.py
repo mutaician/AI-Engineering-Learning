@@ -4,6 +4,13 @@ from pyjokes import get_joke
 from langgraph.graph.state import CompiledStateGraph
 from langgraph.graph import StateGraph, END
 from IPython.display import Image, display
+from langchain_openai import ChatOpenAI
+from langchain_cerebras import ChatCerebras
+from utils import load_joke_prompt_config
+from prompt_bulder import build_prompt_from_config
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # 1. defining the state
 class Joke(BaseModel):
@@ -16,6 +23,13 @@ class JokeState(BaseModel):
     category: Literal["neutral", "chuck", "all"] = "neutral"
     language: Literal["en", "de", "fr", "es"] = "en"
     quit: bool = False
+    latest_joke: str = ""
+    approval_status: bool = False
+    retry_count: int = 0
+
+writer_llm = ChatCerebras(model="gpt-oss-120b")
+critic_llm = ChatOpenAI(model="gpt-5-nano")
+
 
 # ===================
 # Utilities
@@ -69,6 +83,29 @@ def fetch_joke(state: JokeState) -> dict:
     except Exception as e:
         print(f"❌ Error fetching joke: {e}")
         return {}
+
+def writer(state: JokeState) -> dict:
+    joke_prompt_config = load_joke_prompt_config('joke_assistant_prompt')
+    input_question = f"Category: {state.category}"
+    joke_prompt = build_prompt_from_config(joke_prompt_config, input_question )
+    response = writer_llm.invoke(joke_prompt)
+    # print("Writer output: ", response.content)
+    return {"latest_joke": response.content}
+    
+def critic(state: JokeState) -> dict:
+    critic_prompt_config = load_joke_prompt_config('joke_critic_prompt')
+    critic_prompt = build_prompt_from_config(critic_prompt_config, f"Joke: {state.latest_joke}")
+    response = critic_llm.invoke(critic_prompt).content
+    # print("Critic Response: ", response)
+    if response == "no" and state.retry_count < 5:
+        return {"approval_status": False, "retry_count": state.retry_count + 1}
+    else:
+        return {"approval_status": True}
+
+def show_final_joke(state: JokeState) -> dict:
+    new_joke = Joke(text=state.latest_joke, category=state.category)
+    print_joke(new_joke)
+    return {"jokes": state.jokes + [new_joke]}
 
 def update_category(state: JokeState) -> dict:
     categories = ["neutral", "chuck", "all"]
@@ -150,7 +187,10 @@ def build_joke_graph() -> CompiledStateGraph:
     workflow = StateGraph(JokeState)
     
     workflow.add_node("show_menu", show_menu)
-    workflow.add_node("fetch_joke", fetch_joke)
+    # workflow.add_node("fetch_joke", fetch_joke)
+    workflow.add_node("writer", writer)
+    workflow.add_node("critic", critic)
+    workflow.add_node("show_final_joke", show_final_joke)
     workflow.add_node("update_category", update_category)
     workflow.add_node("update_language", update_language)
     workflow.add_node("reset_jokes", reset_jokes)
@@ -162,20 +202,36 @@ def build_joke_graph() -> CompiledStateGraph:
         "show_menu",
         route_choice,
         {
-            "fetch_joke": "fetch_joke",
+            "fetch_joke": "writer",
             "update_category": "update_category",
             "update_language": "update_language",
             "reset_jokes": "reset_jokes",
             "exit_bot": "exit_bot"
         }
     )
-    workflow.add_edge("fetch_joke", "show_menu")
+    # workflow.add_edge("fetch_joke", "show_menu")
+    workflow.add_edge("writer", "critic")
+    workflow.add_conditional_edges(
+        "critic",
+        lambda state: "show_final_joke" if state.approval_status else "writer",
+        {
+            "show_final_joke": "show_final_joke",
+            "writer": "writer"
+        }
+    )
+    workflow.add_edge("show_final_joke", "show_menu")
     workflow.add_edge("update_category", "show_menu")
     workflow.add_edge("update_language", "show_menu")
     workflow.add_edge("reset_jokes", "show_menu")
     workflow.add_edge("exit_bot", END)
     
     return workflow.compile()
+
+# def main():
+#     graph = build_joke_graph()
+#     # final_state = graph.invoke(JokeState(), config={"recursion_limit": 100})
+#     with open("joke-llm-graph.png", "wb") as f:
+#         f.write(graph.get_graph().draw_mermaid_png())
 
 def main():
     print("\n" + "🎉" + "=" * 58 + "🎉")
@@ -209,8 +265,8 @@ def main():
     print("=" * 60 + "\n")
 
     # Save graph PNG
-    with open("joke-graph.png", "wb") as f:
-        f.write(graph.get_graph().draw_mermaid_png())
+    # with open("joke-llm-graph.png", "wb") as f:
+    #     f.write(graph.get_graph().draw_mermaid_png())
 
 if __name__ == "__main__":
     main()

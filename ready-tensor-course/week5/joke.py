@@ -20,7 +20,7 @@ class Joke(BaseModel):
 class JokeState(BaseModel):
     jokes: List[Joke] = []
     jokes_choice: Literal["n", "c", "l", "r", "q"] = "n" # next joke, change category, change language, reset, or quit
-    category: Literal["neutral", "chuck", "all"] = "neutral"
+    category: str = "default"
     language: Literal["en", "de", "fr", "es"] = "en"
     quit: bool = False
     latest_joke: str = ""
@@ -45,7 +45,7 @@ def print_joke(joke: Joke):
 
 def print_menu_header(category: str, language: str, total_jokes: int):
     """Print a compact menu header."""
-    print(f"🎭 Menu | Category: {category.upper()} | Language: {language.upper()} | Jokes: {total_jokes}")
+    print(f"🎭 Menu | Category: {category.replace('_', ' ').title()} | Language: {language.upper()} | Jokes: {total_jokes}")
     print("-" * 50)
 
 def print_category_menu():
@@ -74,15 +74,15 @@ def show_menu(state: JokeState) -> dict:
         )
     return {"jokes_choice": user_input}
 
-def fetch_joke(state: JokeState) -> dict:
-    try:
-        joke_text = get_joke(language=state.language, category=state.category)
-        new_joke = Joke(text=joke_text, category=state.category)
-        print_joke(new_joke)
-        return {"jokes": state.jokes + [new_joke]}
-    except Exception as e:
-        print(f"❌ Error fetching joke: {e}")
-        return {}
+# def fetch_joke(state: JokeState) -> dict:
+#     try:
+#         joke_text = get_joke(language=state.language, category=state.category)
+#         new_joke = Joke(text=joke_text, category=state.category)
+#         print_joke(new_joke)
+#         return {"jokes": state.jokes + [new_joke]}
+#     except Exception as e:
+#         print(f"❌ Error fetching joke: {e}")
+#         return {}
 
 def writer(state: JokeState) -> dict:
     joke_prompt_config = load_joke_prompt_config('joke_assistant_prompt')
@@ -102,26 +102,45 @@ def critic(state: JokeState) -> dict:
     else:
         return {"approval_status": True}
 
+def human_approval(state: JokeState) -> dict:
+    print("The joke is: ", state.latest_joke)
+    human_input = get_user_input("Is this joke really funny? (y/n): ")
+    if human_input == "n":
+        return {"approval_status": False}
+    else:
+        return {"approval_status": True}
+
+
 def show_final_joke(state: JokeState) -> dict:
     new_joke = Joke(text=state.latest_joke, category=state.category)
     print_joke(new_joke)
-    return {"jokes": state.jokes + [new_joke]}
+    return {"jokes": state.jokes + [new_joke], "retry_count": 0, "approval_status": False, "latest_joke": ""}
 
 def update_category(state: JokeState) -> dict:
-    categories = ["neutral", "chuck", "all"]
+    joke_categories = [
+        "default",              # Neutral / general jokes
+        "syntax_and_semantics", # Missing semicolons, confusing rules
+        "language_specific",    # Python, Java, JS, etc.
+        "bugs_and_debugging",   # Fixing one bug, creating two
+        "compilation_runtime",  # Errors, crashes, infinite loops
+        "programmer_lifestyle", # Coffee, late nights, dark mode
+        "algorithms_and_math",  # Recursion, 0-based indexing
+        "version_control",      # Git mishaps, merge conflicts
+        "security_hacking"      # SQL injections, weak passwords
+    ]
     print_category_menu()
 
-    for i, cat in enumerate(categories):
-        emoji = "🎯" if cat == "neutral" else "🥋" if cat == "chuck" else "🌟"
-        print(f"    {i}. {emoji} {cat.upper()}")
+    for i, cat in enumerate(joke_categories):
+        emoji = "🎯" if cat == "default" else "💻" if "syntax" in cat or "language" in cat else "🐛" if "bug" in cat else "⚡" if "compilation" in cat else "☕" if "lifestyle" in cat else "�" if "math" in cat else "🔀" if "version" in cat else "🔒" if "security" in cat else "😄"
+        print(f"    {i}. {emoji} {cat.replace('_', ' ').title()}")
 
     print("=" * 60)
 
     try:
         selection = int(get_user_input("    Enter category number: "))
-        if 0 <= selection < len(categories):
-            selected_category = categories[selection]
-            print(f"    ✅ Category changed to: {selected_category.upper()}")
+        if 0 <= selection < len(joke_categories):
+            selected_category = joke_categories[selection]
+            print(f"    ✅ Category changed to: {selected_category.replace('_', ' ').title()}")
             return {"category": selected_category}
         else:
             print("    ❌ Invalid choice. Keeping current category.")
@@ -189,7 +208,8 @@ def build_joke_graph() -> CompiledStateGraph:
     workflow.add_node("show_menu", show_menu)
     # workflow.add_node("fetch_joke", fetch_joke)
     workflow.add_node("writer", writer)
-    workflow.add_node("critic", critic)
+    # workflow.add_node("critic", critic)
+    workflow.add_node("human_approval", human_approval)
     workflow.add_node("show_final_joke", show_final_joke)
     workflow.add_node("update_category", update_category)
     workflow.add_node("update_language", update_language)
@@ -210,9 +230,9 @@ def build_joke_graph() -> CompiledStateGraph:
         }
     )
     # workflow.add_edge("fetch_joke", "show_menu")
-    workflow.add_edge("writer", "critic")
+    workflow.add_edge("writer", "human_approval")
     workflow.add_conditional_edges(
-        "critic",
+        "human_approval",
         lambda state: "show_final_joke" if state.approval_status else "writer",
         {
             "show_final_joke": "show_final_joke",
@@ -230,7 +250,7 @@ def build_joke_graph() -> CompiledStateGraph:
 # def main():
 #     graph = build_joke_graph()
 #     # final_state = graph.invoke(JokeState(), config={"recursion_limit": 100})
-#     with open("joke-llm-graph.png", "wb") as f:
+#     with open("graph.png", "wb") as f:
 #         f.write(graph.get_graph().draw_mermaid_png())
 
 def main():
@@ -255,7 +275,7 @@ def main():
     print("=" * 60)
     jokes = final_state.get('jokes', [])
     print(f"    📈 You enjoyed {len(jokes)} jokes during this session!")
-    print(f"    📂 Final category: {final_state.get('category', 'unknown').upper()}")
+    print(f"    📂 Final category: {final_state.get('category', 'unknown').replace('_', ' ').title()}")
     print(f"    🌍 Final language: {final_state.get('language', 'unknown').upper()}")
     if jokes:
         print("    🙏 Thanks for using the LangGraph Joke Bot!")

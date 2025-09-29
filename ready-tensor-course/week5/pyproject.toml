@@ -11,6 +11,7 @@ dependencies = [
     "langgraph>=0.6.7",
     "pydantic>=2.11.9",
     "pyjokes>=0.8.3",
+    "pyppeteer>=2.0.0",
     "python-dotenv>=1.1.1",
     "streamlit>=1.49.1",
 ]

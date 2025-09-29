@@ -34,7 +34,17 @@ LangGraph is built for dynamic, multi-agent systems that adapt and evolve.
 - append to messages (LLM Chat apps)
 - append to generic lists
 - sum or count
-- custom merge logic 
+- custom merge logic
+
+### Langsmith
+- platform that brings observabillity to language model-powered systems   
+
+. Full-system traceability. Every action your system takes — LLM calls, tool invocations, node transitions — is logged in sequence, so you can see how things actually ran.
+. Live state visibility. For each step, LangSmith shows you the exact input, output, and state updates — letting you debug without guesswork.
+. Visual timeline. Traces are displayed as interactive, navigable timelines. You can inspect branches, loops, retries, and conditional paths at a glance.
+. Performance and cost insights. LangSmith tracks token usage, latency, and per-call costs. No more wondering where the slowdowns or expenses are coming from.
+. Automated evaluations. With built-in LLM-powered grading, you can define test sets and measure output quality over time — no manual spot-checking required.
+. Searchable, organized runs. Tag, filter, and explore past runs by user, version, or use case — perfect for regression testing, debugging, or collaboration.
 
 ## Learning project
 

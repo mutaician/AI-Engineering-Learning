@@ -3,6 +3,7 @@ from pydantic import BaseModel
 from pyjokes import get_joke
 from langgraph.graph.state import CompiledStateGraph
 from langgraph.graph import StateGraph, END
+from langchain_core.runnables.graph import MermaidDrawMethod
 from IPython.display import Image, display
 from langchain_openai import ChatOpenAI
 from langchain_cerebras import ChatCerebras
@@ -27,7 +28,8 @@ class JokeState(BaseModel):
     approval_status: bool = False
     retry_count: int = 0
 
-writer_llm = ChatCerebras(model="gpt-oss-120b")
+# writer_llm = ChatCerebras(model="gpt-oss-120b")
+writer_llm = ChatOpenAI(model="gpt-5-nano")
 critic_llm = ChatOpenAI(model="gpt-5-nano")
 
 
@@ -38,9 +40,9 @@ critic_llm = ChatOpenAI(model="gpt-5-nano")
 def get_user_input(prompt: str) -> str:
     return input(prompt).strip().lower()
 
-def print_joke(joke: Joke):
+def print_joke(joke):
     """Print a joke with nice formatting."""
-    print(f"\n😂 {joke.text}\n")
+    print(f"\n😂 {joke}\n")
     print("=" * 60)
 
 def print_menu_header(category: str, language: str, total_jokes: int):
@@ -103,18 +105,14 @@ def critic(state: JokeState) -> dict:
         return {"approval_status": True}
 
 def human_approval(state: JokeState) -> dict:
-    print("The joke is: ", state.latest_joke)
+    # print("The joke is: ", state.latest_joke)
+    print_joke(state.latest_joke)
     human_input = get_user_input("Is this joke really funny? (y/n): ")
-    if human_input == "n":
-        return {"approval_status": False}
+    if human_input == "y":
+        new_joke = Joke(text=state.latest_joke, category=state.category)
+        return {"jokes": state.jokes + [new_joke], "retry_count": 0, "approval_status": True, "latest_joke": ""}
     else:
-        return {"approval_status": True}
-
-
-def show_final_joke(state: JokeState) -> dict:
-    new_joke = Joke(text=state.latest_joke, category=state.category)
-    print_joke(new_joke)
-    return {"jokes": state.jokes + [new_joke], "retry_count": 0, "approval_status": False, "latest_joke": ""}
+        return {"approval_status": False}
 
 def update_category(state: JokeState) -> dict:
     joke_categories = [
@@ -210,7 +208,7 @@ def build_joke_graph() -> CompiledStateGraph:
     workflow.add_node("writer", writer)
     # workflow.add_node("critic", critic)
     workflow.add_node("human_approval", human_approval)
-    workflow.add_node("show_final_joke", show_final_joke)
+    # workflow.add_node("show_final_joke", show_final_joke)
     workflow.add_node("update_category", update_category)
     workflow.add_node("update_language", update_language)
     workflow.add_node("reset_jokes", reset_jokes)
@@ -233,13 +231,13 @@ def build_joke_graph() -> CompiledStateGraph:
     workflow.add_edge("writer", "human_approval")
     workflow.add_conditional_edges(
         "human_approval",
-        lambda state: "show_final_joke" if state.approval_status else "writer",
+        lambda state: "show_menu" if state.approval_status else "writer",
         {
-            "show_final_joke": "show_final_joke",
+            "show_menu": "show_menu",
             "writer": "writer"
         }
     )
-    workflow.add_edge("show_final_joke", "show_menu")
+    # workflow.add_edge("show_final_joke", "show_menu")
     workflow.add_edge("update_category", "show_menu")
     workflow.add_edge("update_language", "show_menu")
     workflow.add_edge("reset_jokes", "show_menu")
@@ -251,7 +249,7 @@ def build_joke_graph() -> CompiledStateGraph:
 #     graph = build_joke_graph()
 #     # final_state = graph.invoke(JokeState(), config={"recursion_limit": 100})
 #     with open("graph.png", "wb") as f:
-#         f.write(graph.get_graph().draw_mermaid_png())
+#         f.write(graph.get_graph().draw_mermaid_png(draw_method=MermaidDrawMethod.PYPPETEER))
 
 def main():
     print("\n" + "🎉" + "=" * 58 + "🎉")
@@ -286,7 +284,7 @@ def main():
 
     # Save graph PNG
     # with open("joke-llm-graph.png", "wb") as f:
-    #     f.write(graph.get_graph().draw_mermaid_png())
+    #     f.write(graph.get_graph().draw_mermaid_png(draw_method=MermaidDrawMethod.PYPPETEER))
 
 if __name__ == "__main__":
     main()

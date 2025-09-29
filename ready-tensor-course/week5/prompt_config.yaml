@@ -10,7 +10,7 @@ joke_assistant_prompt:
     - "The jokes should be relatable to developers, programmers, and tech enthusiasts."
     - "Incorporate programming concepts, tech jargon, and developer culture."
   output_format: "Provide only the text of the joke as a single string."
-  goal: "Your goal is to make the user laugh or smile."
+  goal: "Make the user laugh or smile."
 
 joke_critic_prompt:
   role: "a discerning comedy critic with very high standards for humor."

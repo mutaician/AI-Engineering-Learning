@@ -46,6 +46,27 @@ LangGraph is built for dynamic, multi-agent systems that adapt and evolve.
 . Automated evaluations. With built-in LLM-powered grading, you can define test sets and measure output quality over time — no manual spot-checking required.
 . Searchable, organized runs. Tag, filter, and explore past runs by user, version, or use case — perfect for regression testing, debugging, or collaboration.
 
+chatbot -> llm, smart prompting, reasoning(CoT,ReAct, SelfAsk), documents(rag)
+
+### Giving Agent Tools
+Tools are how the agent gets things done
+- clear purpose, structured input and output, declaratively registered
+Why Tools - looking up information, specialized processing, taking actions
+
+* Tool Use - mechanics, how to invoke tool and pass right inputs
+* Tool Choice - judgement, what tool is actually needed and which one to use
+
+#### Lnaggraph Agent with Tools
+Components - LLM Node, Tools Node, Router Logic
+
+1. **Tool Setup** — Load the Tavily search tool and prepare the LLM.
+2. **Agent State Definition** — Create a State object to track messages.
+3. **Tool Registration** — Register available tools so the LLM knows what it can use.
+4. **LLM Node** — Let the agent decide whether to respond or call a tool.
+5. **Tools Node** — Execute the tool and return results back to the agent.
+6. **Routing Logic** — Determine whether to use a tool or respond directly. 
+7. **Graph Assembly** — Connect all the pieces into a working LangGraph.
+
 ## Learning project
 
 ### Simple Joke Bot with LangGraph

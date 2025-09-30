@@ -2,6 +2,13 @@ import { AIMessage, ToolMessage } from "@langchain/langgraph-sdk";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 function isComplexValue(value: any): boolean {
   return Array.isArray(value) || (typeof value === "object" && value !== null);
@@ -67,6 +74,7 @@ export function ToolCalls({
 
 export function ToolResult({ message }: { message: ToolMessage }) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   let parsedContent: any;
   let isJsonContent = false;
@@ -92,6 +100,20 @@ export function ToolResult({ message }: { message: ToolMessage }) {
         ? contentStr.slice(0, 500) + "..."
         : contentLines.slice(0, 4).join("\n") + "\n..."
       : contentStr;
+
+  // If the tool returned our visualization payload, render the image nicely.
+  const visImageBase64: string | undefined = isJsonContent
+    ? parsedContent?.image?.base64
+    : undefined;
+  const visTitle: string | undefined = isJsonContent
+    ? parsedContent?.title || parsedContent?.summary
+    : undefined;
+  const visError: string | undefined = isJsonContent
+    ? parsedContent?.error
+    : undefined;
+  const dataUrl = visImageBase64
+    ? `data:image/${parsedContent?.image?.format || "png"};base64,${visImageBase64}`
+    : undefined;
 
   return (
     <div className="border border-gray-200 rounded-lg overflow-hidden">
@@ -129,7 +151,47 @@ export function ToolResult({ message }: { message: ToolMessage }) {
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.2 }}
             >
-              {isJsonContent ? (
+              {isJsonContent && visError ? (
+                <code className="text-sm block text-rose-600">{visError}</code>
+              ) : isJsonContent && dataUrl ? (
+                <div className="flex flex-col gap-3">
+                  {visTitle && (
+                    <p className="text-sm text-gray-700 font-medium">{visTitle}</p>
+                  )}
+                  <div className="rounded-md border bg-white p-2">
+                    {/* preview */}
+                    <img
+                      src={dataUrl}
+                      alt={visTitle || "Visualization"}
+                      className="max-h-56 w-full object-contain"
+                    />
+                  </div>
+                  <div>
+                    <Sheet open={isOpen} onOpenChange={setIsOpen}>
+                      <SheetTrigger asChild>
+                        <button className="text-sm text-blue-600 hover:underline">View larger</button>
+                      </SheetTrigger>
+                      <SheetContent side="right">
+                        <SheetHeader>
+                          <SheetTitle>{visTitle || "Visualization"}</SheetTitle>
+                        </SheetHeader>
+                        <div className="p-4">
+                          <img
+                            src={dataUrl}
+                            alt={visTitle || "Visualization"}
+                            className="w-full h-auto object-contain"
+                          />
+                          {parsedContent?.source?.rowCount !== undefined && (
+                            <p className="mt-2 text-xs text-gray-500">
+                              Rows: {parsedContent.source.rowCount}
+                            </p>
+                          )}
+                        </div>
+                      </SheetContent>
+                    </Sheet>
+                  </div>
+                </div>
+              ) : isJsonContent ? (
                 <table className="min-w-full divide-y divide-gray-200">
                   <tbody className="divide-y divide-gray-200">
                     {(Array.isArray(parsedContent)
@@ -137,7 +199,7 @@ export function ToolResult({ message }: { message: ToolMessage }) {
                         ? parsedContent
                         : parsedContent.slice(0, 5)
                       : Object.entries(parsedContent)
-                    ).map((item, argIdx) => {
+                    ).map((item: any, argIdx: number) => {
                       const [key, value] = Array.isArray(parsedContent)
                         ? [argIdx, item]
                         : [item[0], item[1]];

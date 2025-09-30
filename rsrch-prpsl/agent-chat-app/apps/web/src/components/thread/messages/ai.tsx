@@ -107,9 +107,19 @@ export function AssistantMessage({
     );
   const hasAnthropicToolCalls = !!anthropicStreamedToolCalls?.length;
   const isToolResult = message?.type === "tool";
-
+  // If hideToolCalls is enabled, still show visualization artifacts (image payloads)
   if (isToolResult && hideToolCalls) {
-    return null;
+    try {
+      const maybeStr = typeof message?.content === "string" ? message.content : "";
+      const parsed = maybeStr ? JSON.parse(maybeStr) : undefined;
+      const hasVisImage = parsed?.image?.base64;
+      if (!hasVisImage) {
+        return null;
+      }
+      // else: fall through to render <ToolResult />
+    } catch {
+      return null;
+    }
   }
 
   return (

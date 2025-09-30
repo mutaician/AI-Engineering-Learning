@@ -13,3 +13,8 @@ How many tracks have been sold in each media type?
 Which customers have not made a purchase in the last 6 months?
 What is the total revenue from invoices billed to each state?
 Which albums have the longest average track duration?
+could you show me the 21'st to 25th artist based on revenue 
+
+Show top 10 best-selling albums as a bar chart
+Plot total revenue by genre as a pie chart
+Show top 10 albums by total revenue as a bar chart

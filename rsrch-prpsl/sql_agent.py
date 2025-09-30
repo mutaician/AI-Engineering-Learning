@@ -6,20 +6,26 @@ from dotenv import load_dotenv
 import re
 from langchain_core.tools import tool
 # from langchain.agents import create_agent
-from langgraph.prebuilt import create_react_agent as create_agent
+# from langgraph.prebuilt import create_react_agent as create_agent
 from langchain_core.messages import SystemMessage
+from langchain_core.messages import AIMessage
+from langchain_core.messages import HumanMessage
+from langgraph.graph import StateGraph, MessagesState, END
+from langchain_core.runnables.graph import MermaidDrawMethod
+from langgraph.prebuilt import ToolNode
 from langchain_cerebras import ChatCerebras
+from typing import cast
 
 
 load_dotenv()
 
 
-# llm = init_chat_model("openai:gpt-5-nano")
+llm = init_chat_model("openai:gpt-5-nano")
 
-llm = ChatCerebras(
-    model="qwen-3-coder-480b",
-    # other params...
-)
+# llm = ChatCerebras(
+#     model="qwen-3-coder-480b",
+#     # other params...
+# )
 
 # Configure the sample database
 url = "https://storage.googleapis.com/benchmarks-artifacts/chinook/Chinook.db"
@@ -91,20 +97,45 @@ Rules:
 - Prefer explicit column lists; avoid SELECT *.
 """
 
-agent = create_agent(
-    model=llm,
-    tools=[execute_sql],
-    prompt=SystemMessage(content=SYSTEM),
-)
+# Define the graph manually
+model_with_tools = llm.bind_tools([execute_sql])
+
+def llm_node(state: MessagesState) -> MessagesState:
+    msgs = [SystemMessage(content=SYSTEM)] + state["messages"]
+    ai = cast(AIMessage, model_with_tools.invoke(msgs))
+    return {"messages": [ai]}
+
+def route_from_llm(state: MessagesState):
+    last = state["messages"][-1]
+    if isinstance(last, AIMessage) and getattr(last, "tool_calls", None):
+        return "tools"
+    return END
+
+tool_node = ToolNode([execute_sql])
+
+builder = StateGraph(MessagesState)
+builder.add_node("llm", llm_node)
+builder.add_node("tools", tool_node)
+builder.set_entry_point("llm")
+builder.add_conditional_edges("llm", route_from_llm, {"tools": "tools", END: END})
+builder.add_edge("tools", "llm")
+
+graph = builder.compile()
 
 
-# Run the agent
-# question = "Which genre on average has the longest tracks?"
-question = "Which customers are our biggest spenders and what genres do they prefer?"
+if __name__ == "__main__":
+    # Visualize the graph
+    from IPython.display import Image, display
+    png_data = graph.get_graph().draw_mermaid_png(draw_method=MermaidDrawMethod.PYPPETEER)
+    with open("graph.png", "wb") as f:
+        f.write(png_data)
+    print("Graph saved as graph.png")
 
-
-# for step in agent.stream(
-#     {"messages": [{"role": "user", "content": question}]},
-#     stream_mode="values",
-# ):
-#     step["messages"][-1].pretty_print()
+    # Run the agent
+    # question = "Which genre on average has the longest tracks?"
+    question = "What are the top 10 best-selling albums by total revenue and Which customers have spent the most money in the last year?"
+    for step in graph.stream(
+        {"messages": [HumanMessage(content=question)]},
+        stream_mode="values",
+    ):
+        step["messages"][-1].pretty_print()

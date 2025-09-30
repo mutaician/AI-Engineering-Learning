@@ -1,9 +1,7 @@
 {
-  "dependencies": [
-    "."
-  ],
+  "dependencies": ["."],
   "graphs": {
-    "agent": "./sql_agent.py:agent"
+      "graph": "./sql_agent.py:graph"
   },
   "env": ".env"
 }

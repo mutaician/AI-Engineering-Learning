@@ -1,0 +1,10 @@
+---
+model: googleai/gemini-2.5-flash
+input:
+  schema:
+    character: string
+    setting: string
+---
+
+Write a short, fun story (2-3 paragraphs) about {{character}} in {{setting}}.
+Keep it light-hearted and suitable for all ages.

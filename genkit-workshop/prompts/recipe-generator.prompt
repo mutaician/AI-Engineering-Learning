@@ -1,0 +1,10 @@
+---
+model: googleai/gemini-2.5-flash
+input:
+  schema:
+    ingredient: string
+    mealType: string
+---
+
+Create a simple recipe for {{mealType}} using {{ingredient}} as the main ingredient.
+Keep it easy to follow with basic ingredients and simple steps.

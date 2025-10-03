@@ -1,0 +1,27 @@
+{
+  "name": "genkit-workshop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "example1": "tsx src/index.ts",
+    "example2": "tsx src/example2-prompts.ts",
+    "example3": "tsx src/example3-flows.ts",
+    "studio": "genkit start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.15.1",
+  "dependencies": {
+    "@genkit-ai/google-genai": "^1.20.0",
+    "dotenv": "^17.2.0",
+    "genkit": "^1.20.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.5.2",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
+  }
+}

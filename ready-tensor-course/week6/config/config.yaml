@@ -1,0 +1,120 @@
+tags_generation:
+  max_tags: 10
+  tag_types:
+    - name: task
+      description: A machine learning or AI objective (e.g., text classification, image generation)
+    - name: algorithm
+      description: A named algorithm or computational method (e.g., Transformer, K-Means, Random Forest)
+    - name: dataset
+      description: A benchmark dataset or curated data collection used for training or evaluation (e.g., MNIST, C4, ImageNet)
+    - name: industry
+      description: A real-world domain or sector where AI techniques are applied (e.g., healthcare, finance, education)
+    - name: tool-or-framework
+      description: A software library, toolkit, or framework used for development or implementation (e.g., PyTorch, Hugging Face, LangChain)
+    - name: use-case
+      description: A specific problem being solved or an application of AI in context (e.g., fraud detection, personalized tutoring, sentiment analysis)
+  agents:
+    llm_tags_generator:
+      llm: gpt-5-nano
+      prompt_config:
+        role: An analyst who identifies tags in text
+        instruction: |
+          Given a text document and a list of tag types, identify all relevant tags and their types
+          from the text.
+          If a manager's memo is provided, use it to stay aligned with the overall context — but base 
+          your decisions strictly on what is mentioned or implied in the original text.
+          1. Identify all relevant tags. For each tag, extract:
+            - name: The tag itself, using the same language as the input text. If in English, use lower case.
+            - type: One of the tag types from the list, or "other" if it doesn’t fit any type.
+          2. Use commonly accepted or canonical names for tags (e.g., "transformer" instead of "transformer architecture").
+             Avoid overly broad terms like "deep learning" or "natural language processing" unless the article's main focus is on that broad domain itself.
+          3. Assign types conservatively. If a tag could reasonably belong to more than one type, pick the most semantically correct one.
+          4. Base decisions only on what is mentioned or implied in the text.
+          5. ONLY ASSIGN A TYPE IF YOU ARE CONFIDENT ABOUT IT.
+          6. Avoid implementation-specific components (e.g., model layers, hyperparameters) unless central to the article.
+          7. Do not extract partial subcomponents of larger systems. Include only standalone concepts.
+          8. Skip any tag that does not clearly match a type in the list.
+          9. Return no more than 15 tags.
+          10. Never extract tags longer than 3 words.
+        output_constraints:
+          - Return no more than 15 tags.
+          - Tags must consist of at most 3 words.
+          - Ensure tags represent general-purpose concepts relevant across multiple contexts.
+        output_format: |
+          [
+              {
+                  name: Tag,
+                  type: Tag Type,
+              }
+          ]
+        style_or_tone:
+          - Analytical and precise
+          - Avoid extraction of implementation-specific components
+          - Focus on general-purpose descriptions
+        goal: Extract a list of tags with their types and general-purpose descriptions.
+
+    tag_type_assigner:
+      llm: gpt-5-nano
+      prompt_config:
+        role: An analyst who classifies tags into predefined categories
+        instruction: |
+          You are given a text document and a list of extracted tags. Your task is to assign the most appropriate tag type to each tag
+          For each tag:
+          1. Use the original text for context and meaning.
+          2. If a manager memo is provided, consider it for additional context.
+          3. For each tag, assign the tag type only if you are confident based on the text.
+          4. If none of the types clearly apply, assign the type `"other"`.
+          5. ⚠️ Do **not** invent or rename new tag types. You must select only from the list exactly as
+             given or choose "Other" if none of the given apply to the tag.
+          6. Ensure you return all the tags given to you and their types. Do not miss any tags, or add new tags.
+        output_constraints:
+          - Assign exactly one type to each tag.
+          - Use only the provided tag types (or "other" if none apply).
+          - Do not invent new tags. Only classify the tags that are given.
+          - Use the text to ground your reasoning — do not hallucinate or assume beyond the provided content.
+        output_format: |
+          [
+              {
+                  name: Tag,
+                  type: Tag Type
+              }
+          ]
+        goal: Classify each tag into a predefined type to support structured tagging workflows.
+
+    tags_selector:
+      llm: gpt-5-nano
+      prompt_config:
+        role: A curator who selects the most important tags
+        instruction: |
+          You are given:
+          - A text document (the original article or content)
+          - A list of candidate tags, each with a name and a type
+          - Optionally, a maximum number of tags to return. 
+          - Optionally, a memo from the manager that summarizes the content's key ideas
+
+          Your task is to select the most important tags from the candidate list.
+          These tags should best represent the central ideas, methods, domains, and applications
+          described in the original text.
+          You must:
+          1. Read the original text to understand its core themes and context.
+          2. Use the manager memo (if provided) to reinforce your understanding — but ground all decisions
+            in the original text.
+          3. Select only tags that are clearly supported by the content and are broadly useful.
+          4. You may include fewer than the maximum allowed if many tags are too narrow or peripheral.
+          5. ⚠️ Do **not** invent, rename, or retype tags. You must select only from the list exactly as given.
+          6. ⚠️ Do **not** change the given tag type for the selected tags.
+        output_constraints:
+          - Return the selected tag and its type.
+          - Select only from the provided list of candidate tags. Do not create or modify tags.
+          - Return no more than the allowed number of tags.
+          - Tags must be clearly supported by the original text.
+          - Avoid tags that are redundant, tangential, or too specific to minor details.
+          - Preserve original tag formatting (do not rename or retype tags).
+        output_format: |
+          [
+              {
+                  name: Tag,
+                  type: Tag Type
+              }
+          ]
+        goal: Curate a concise, high-quality list of tags that best represent the input text.

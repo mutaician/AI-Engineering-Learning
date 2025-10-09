@@ -3,12 +3,15 @@
   "author": "Your Name",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"turbo dev --filter=web\" \"turbo dev --filter=agents\"",
+    "dev": "turbo dev --filter=web",
     "build": "turbo build",
     "turbo:command": "turbo",
     "format": "turbo format",
     "lint": "turbo lint",
     "lint:fix": "turbo lint:fix"
+  },
+  "resolutions": {
+    "@langchain/core": "^0.3.59"
   },
   "devDependencies": {
     "turbo": "latest",
@@ -25,9 +28,6 @@
     "eslint-plugin-no-instanceof": "^1.0.1",
     "eslint-plugin-prettier": "^5.2.3",
     "prettier": "^3.3.3"
-  },
-  "resolutions": {
-    "@langchain/core": "^0.3.42"
   },
   "packageManager": "pnpm@10.6.3"
 }

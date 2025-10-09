@@ -37,21 +37,7 @@ llm = init_chat_model("openai:gpt-5-nano")
 # )
 
 # Configure the sample database
-url = "https://storage.googleapis.com/benchmarks-artifacts/chinook/Chinook.db"
-local_path = pathlib.Path("Chinook.db")
-
-if local_path.exists():
-    print(f"{local_path} already exists, skipping download.")
-else:
-    response = requests.get(url)
-    if response.status_code == 200:
-        local_path.write_bytes(response.content)
-        print(f"File downloaded and saved as {local_path}")
-    else:
-        print(f"Failed to download the file. Status code: {response.status_code}")
-
-# Tools for database interaction
-db = SQLDatabase.from_uri("sqlite:///Chinook.db")
+db = SQLDatabase.from_uri("sqlite:///inventory.db")
 SCHEMA = db.get_table_info() # extract info about the database
 
 # Execute sql queries
@@ -326,6 +312,8 @@ Output constraints:
 
 Tone/Style:
 - Friendly and human. Clear, step-by-step reasoning. Avoid jargon unless needed.
+- When a user asks for random query that doesn't involve anything to do with the data don't provide sql statements
+- Remember the sql statements are for you to run not the user
 
 Examples:
 - If asked "Show top albums by revenue as a bar chart", generate a SELECT with SUM(...) GROUP BY album, ORDER BY DESC, and call `visualize_sql` with chart_type="bar", x="Album", y="Revenue", aggregate="sum", top_n=20.
@@ -369,16 +357,15 @@ graph = builder.compile()
 
 
 if __name__ == "__main__":
-    # Visualize the graph
-    from IPython.display import Image, display
-    png_data = graph.get_graph().draw_mermaid_png(draw_method=MermaidDrawMethod.PYPPETEER)
-    with open("graph.png", "wb") as f:
-        f.write(png_data)
-    print("Graph saved as graph.png")
+    # # Visualize the graph
+    # from IPython.display import Image, display
+    # png_data = graph.get_graph().draw_mermaid_png(draw_method=MermaidDrawMethod.PYPPETEER)
+    # with open("graph.png", "wb") as f:
+    #     f.write(png_data)
+    # print("Graph saved as graph.png")
 
     # Run the agent
-    # question = "Which genre on average has the longest tracks?"
-    question = "What are the top 10 best-selling albums by total revenue and Which customers have spent the most money in the last year?"
+    question = "could you check my stock"
     for step in graph.stream(
         {"messages": [HumanMessage(content=question)]},
         stream_mode="values",
